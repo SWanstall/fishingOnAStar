@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dejc6jargxmdr"]
+
+[ext_resource type="Script" uid="uid://dy6vilr8oknuj" path="res://scripts/fishing_zone.gd" id="1_bi2hw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5tyg"]
+
+[node name="FishingZone" type="Area2D" unique_id=583405875]
+collision_mask = 2
+script = ExtResource("1_bi2hw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1352754076]
+shape = SubResource("RectangleShape2D_h5tyg")
+
+[node name="Timer" type="Timer" parent="." unique_id=1010964708]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

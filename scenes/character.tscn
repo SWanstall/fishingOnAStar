@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://pa7ncide7ajv"]
+
+[ext_resource type="Texture2D" uid="uid://xrir0sdus7sp" path="res://assets/sprites/knight.png" id="1_glpr6"]
+[ext_resource type="Script" uid="uid://dm866fohapki0" path="res://scripts/character.gd" id="1_rkhd4"]
+[ext_resource type="FontFile" uid="uid://c1lxp1evsolc0" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_lrhn5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjt0s"]
+atlas = ExtResource("1_glpr6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa5vi"]
+atlas = ExtResource("1_glpr6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfnr8"]
+atlas = ExtResource("1_glpr6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px5sl"]
+atlas = ExtResource("1_glpr6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qfo5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjt0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wa5vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfnr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_px5sl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_glpr6"]
+radius = 5.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1417100782]
+collision_layer = 2
+script = ExtResource("1_rkhd4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=953716331]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_0qfo5")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1687274223]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_glpr6")
+
+[node name="BobbingTimer" type="Timer" parent="." unique_id=1532214565]
+one_shot = true
+
+[node name="SetHookTimer" type="Timer" parent="." unique_id=716047856]
+one_shot = true
+
+[node name="Fishing!" type="Label" parent="." unique_id=154609319]
+offset_left = -57.0
+offset_top = -51.0
+offset_right = 59.0
+offset_bottom = -28.0
+theme_override_fonts/font = ExtResource("3_lrhn5")
+text = "Fishing!"
+
+[node name="Bite!" type="Label" parent="." unique_id=1265115362]
+offset_left = -33.0
+offset_top = -51.0
+offset_right = 83.0
+offset_bottom = -28.0
+theme_override_fonts/font = ExtResource("3_lrhn5")
+text = "Bite!"
+
+[node name="Hooked!" type="Label" parent="." unique_id=1161779799]
+offset_left = -54.0
+offset_top = -51.0
+offset_right = 54.0
+offset_bottom = -28.0
+theme_override_fonts/font = ExtResource("3_lrhn5")
+text = "Hooked!"
+
+[connection signal="timeout" from="BobbingTimer" to="." method="_on_bobbing_timer_timeout"]
+[connection signal="timeout" from="SetHookTimer" to="." method="_on_set_hook_timer_timeout"]
