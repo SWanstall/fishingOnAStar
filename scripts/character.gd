@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
-signal fish_rarity_set
+var rarity_value = 0.0
+signal fish_rarity_set(rarity_value)
+signal fish_landed
+signal fish_processed
 
 @onready var bobbing_timer = $BobbingTimer
 @onready var set_hook_timer = $SetHookTimer
@@ -11,6 +14,7 @@ signal fish_rarity_set
 var can_set_hook = false
 var hooked = false
 var bobbing = false
+var processed = true
 
 const SPEED = 5000.0
 const JUMP_VELOCITY = -200
@@ -29,9 +33,16 @@ func _process(delta):
 		fishing_.visible = false
 		can_set_hook = false
 		bite_.visible = false
+		processed = false
+		emit_signal("fish_landed")
 		await get_tree().create_timer(5).timeout
 		hooked_.visible = false
 		hooked = false
+		
+	if Input.is_action_just_pressed("ui_down"):
+		processed = true
+		print("processed = %s" % processed)
+		emit_signal("fish_processed")
 
 func _physics_process(delta):
 	 #Add the gravity.
@@ -58,8 +69,10 @@ func _physics_process(delta):
 
 
 func _on_fishing_zone_fishing():
-	if bobbing == false and hooked == false:
-		emit_signal("fish_rarity_set")
+	if bobbing == false and hooked == false and processed == true:
+		rarity_value = randf_range(1.0, 100.0)
+		fish_rarity_set.emit(rarity_value)
+		#emit_signal("fish_rarity_set")
 		var bobbing_time = randf_range(2.0, 5.0)
 		bobbing = true
 		fishing_.visible = true
