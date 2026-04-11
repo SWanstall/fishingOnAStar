@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal fish_rarity_set
+
 @onready var bobbing_timer = $BobbingTimer
 @onready var set_hook_timer = $SetHookTimer
 @onready var fishing_ = $"Fishing!"
@@ -11,7 +13,7 @@ var hooked = false
 var bobbing = false
 
 const SPEED = 5000.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -200
 
 func _ready():
 	fishing_.visible = false
@@ -57,6 +59,7 @@ func _physics_process(delta):
 
 func _on_fishing_zone_fishing():
 	if bobbing == false and hooked == false:
+		emit_signal("fish_rarity_set")
 		var bobbing_time = randf_range(2.0, 5.0)
 		bobbing = true
 		fishing_.visible = true
