@@ -43,6 +43,73 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_glpr6"]
 radius = 5.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lrhn5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lrhn5"]
+specular_texture = SubResource("CompressedTexture2D_lrhn5")
+specular_color = Color(0.64616024, 0.42132297, 0.2053571, 1)
+specular_shininess = 0.45
+
+[sub_resource type="Animation" id="Animation_lrhn5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0341445]
+}
+
+[sub_resource type="Animation" id="Animation_my7n2"]
+resource_name = "casting"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.62, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, -8), Vector2(9.536743e-07, -11), Vector2(8, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.62, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0341445, -0.41901052, 1.0341445]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dp8ca"]
+_data = {
+&"RESET": SubResource("Animation_lrhn5"),
+&"casting": SubResource("Animation_my7n2")
+}
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1417100782]
 collision_layer = 2
 script = ExtResource("1_rkhd4")
@@ -86,6 +153,15 @@ offset_right = 54.0
 offset_bottom = -28.0
 theme_override_fonts/font = ExtResource("3_lrhn5")
 text = "Hooked!"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=317627071]
+position = Vector2(8, -8)
+rotation = 1.0341445
+scale = Vector2(-0.9491024, 12.907124)
+texture = SubResource("CanvasTexture_lrhn5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1371019507]
+libraries/ = SubResource("AnimationLibrary_dp8ca")
 
 [connection signal="timeout" from="BobbingTimer" to="." method="_on_bobbing_timer_timeout"]
 [connection signal="timeout" from="SetHookTimer" to="." method="_on_set_hook_timer_timeout"]

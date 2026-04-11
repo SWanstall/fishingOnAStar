@@ -10,6 +10,7 @@ signal fish_processed
 @onready var fishing_ = $"Fishing!"
 @onready var hooked_ = $"Hooked!"
 @onready var bite_ = $"Bite!"
+@onready var animation_player = $AnimationPlayer
 
 var can_set_hook = false
 var hooked = false
@@ -25,7 +26,7 @@ func _ready():
 	hooked_.visible = false
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_up") and can_set_hook == true and bobbing == true:
+	if Input.is_action_just_pressed("lmb") and can_set_hook == true and bobbing == true:
 		print("HOOKED!")
 		hooked = true
 		hooked_.visible = true
@@ -35,11 +36,11 @@ func _process(delta):
 		bite_.visible = false
 		processed = false
 		emit_signal("fish_landed")
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(1.5).timeout
 		hooked_.visible = false
 		hooked = false
 		
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("rmb"):
 		processed = true
 		print("processed = %s" % processed)
 		emit_signal("fish_processed")
@@ -52,6 +53,9 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+
+	if Input.is_action_just_pressed("scroll"):
+		print("reeling...")
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -76,6 +80,7 @@ func _on_fishing_zone_fishing():
 		var bobbing_time = randf_range(2.0, 5.0)
 		bobbing = true
 		fishing_.visible = true
+		animation_player.play("casting")
 		bobbing_timer.start(bobbing_time)
 
 

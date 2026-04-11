@@ -12,7 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if rod_in_range == true:
-		if Input.is_action_just_pressed("ui_up"):
+		if Input.is_action_just_pressed("lmb"):
 			print("FISHING! signal sent")
 			emit_signal("fishing")
 

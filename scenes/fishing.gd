@@ -4,7 +4,7 @@ extends Node2D
 
 var green = Color(0.2,1,0.2,1)
 var red = Color(1,0.2,0.2,1)
-var blue = Color(0.0,1,1,1)
+var blue = Color(1,0.5,0.0,1)
 
 var fish_rarity = 0
 var hue = green
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 
 func _on_character_body_2d_fish_rarity_set(rarity_value: Variant) -> void:
 	
-	if rarity_value >= 60:
+	if rarity_value >= 60 and rarity_value < 80:
 		hue = red
 	elif rarity_value >= 80:
 		hue = blue
