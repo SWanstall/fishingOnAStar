@@ -161,8 +161,7 @@ offset = Vector2(0.48459795, -0.12555781)
 script = ExtResource("4_my7n2")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Rod" unique_id=218452180]
-position = Vector2(1.0057416, 0.1095047)
-gravity_scale = 0.0
+position = Vector2(0.9283769, 0.1010804)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rod/RigidBody2D" unique_id=671011035]
 position = Vector2(0, 5.9604645e-07)
