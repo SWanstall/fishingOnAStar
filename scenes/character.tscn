@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://xrir0sdus7sp" path="res://assets/sprites/knight.png" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://dm866fohapki0" path="res://scripts/character.gd" id="1_rkhd4"]
 [ext_resource type="FontFile" uid="uid://c1lxp1evsolc0" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_lrhn5"]
+[ext_resource type="Script" uid="uid://bgvuj4awpcsbo" path="res://scripts/rod.gd" id="4_my7n2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjt0s"]
 atlas = ExtResource("1_glpr6")
@@ -50,27 +51,26 @@ specular_texture = SubResource("CompressedTexture2D_lrhn5")
 specular_color = Color(0.64616024, 0.42132297, 0.2053571, 1)
 specular_shininess = 0.45
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_my7n2"]
+radius = 0.05754467
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_my7n2"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_dp8ca"]
+mesh = SubResource("PlaceholderMesh_my7n2")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_0lw5n"]
+specular_texture = SubResource("MeshTexture_dp8ca")
+
 [sub_resource type="Animation" id="Animation_lrhn5"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Rod:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(8, -8)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -79,30 +79,18 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_my7n2"]
 resource_name = "casting"
-length = 0.5
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Rod:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.31, 0.48333332),
+"times": PackedFloat32Array(0, 0.4, 0.6666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(8, -8), Vector2(9.536743e-07, -11), Vector2(8, -8)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.31, 0.48333332),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [1.0341445, -0.41901052, 1.0341445]
+"values": [-0.6667158, -2.3753932, -0.6667158]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dp8ca"]
@@ -164,11 +152,27 @@ text = "Hooked!
 Reel in!"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=317627071]
-position = Vector2(8, -8)
+[node name="Rod" type="Sprite2D" parent="." unique_id=317627071]
+position = Vector2(2.9999986, -3.9999993)
 rotation = 1.0341445
-scale = Vector2(-0.9491024, 12.907124)
+scale = Vector2(18.279125, 1.4651146)
 texture = SubResource("CanvasTexture_lrhn5")
+offset = Vector2(0.48459795, -0.12555781)
+script = ExtResource("4_my7n2")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Rod" unique_id=218452180]
+position = Vector2(1.0057416, 0.1095047)
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rod/RigidBody2D" unique_id=671011035]
+position = Vector2(0, 5.9604645e-07)
+scale = Vector2(0.9999999, 11.034875)
+shape = SubResource("CircleShape2D_my7n2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rod/RigidBody2D" unique_id=1223689164]
+position = Vector2(5.9604645e-08, -2.3841858e-07)
+scale = Vector2(0.006923354, 0.06409901)
+texture = SubResource("CanvasTexture_0lw5n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1371019507]
 libraries/ = SubResource("AnimationLibrary_dp8ca")
