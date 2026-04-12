@@ -54,6 +54,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("scroll"):
 		#print("reeling...")
 		if hooked == true:
+			#print("hooked and reeling")
 			tug_of_war()
 			reeling_progress = reeling_progress + 1.0
 			var reeling_percentage = (reeling_progress/reeling_distance)*100
@@ -65,6 +66,8 @@ func _process(delta):
 				progress_bar.set_value_no_signal(reeling_percentage)
 				hooked = false
 				progress_bar.visible = false
+				tugging = false
+				tug_timer.stop()
 
 
 func _physics_process(delta):
@@ -130,12 +133,15 @@ func _on_set_hook_timer_timeout():
 func tug_of_war():
 	#print("tug of war!!!!!!!")
 	if rarity_value >= 80 and hooked == true and tugging == false:
-		var tugging_time = randf_range(0.2, 0.8)
+		var tugging_time = randf_range(0.4, 0.8)
 		tug_timer.start(tugging_time)
+		#print("tugging")
 		tugging = true
 
 
 func _on_tug_timer_timeout():
+	#print("hooked = %s" % hooked)
+	print("tug timer timeout")
 	var tug_value = randf_range(1, 8)
 	reeling_progress = reeling_progress - tug_value
 	if reeling_progress < 0:
