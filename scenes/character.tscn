@@ -79,6 +79,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_my7n2"]
 resource_name = "casting"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -86,7 +87,7 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.62, 0.96666664),
+"times": PackedFloat32Array(0, 0.31, 0.48333332),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(8, -8), Vector2(9.536743e-07, -11), Vector2(8, -8)]
@@ -98,7 +99,7 @@ tracks/1/path = NodePath("Sprite2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.62, 0.96666664),
+"times": PackedFloat32Array(0, 0.31, 0.48333332),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [1.0341445, -0.41901052, 1.0341445]
@@ -109,6 +110,11 @@ _data = {
 &"RESET": SubResource("Animation_lrhn5"),
 &"casting": SubResource("Animation_my7n2")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_my7n2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrhn5"]
+bg_color = Color(0.29411766, 0.9490196, 0.28235295, 1)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1417100782]
 collision_layer = 2
@@ -129,6 +135,8 @@ one_shot = true
 
 [node name="SetHookTimer" type="Timer" parent="." unique_id=716047856]
 one_shot = true
+
+[node name="TugTimer" type="Timer" parent="." unique_id=1231879873]
 
 [node name="Fishing!" type="Label" parent="." unique_id=154609319]
 offset_left = -57.0
@@ -152,7 +160,9 @@ offset_top = -51.0
 offset_right = 54.0
 offset_bottom = -28.0
 theme_override_fonts/font = ExtResource("3_lrhn5")
-text = "Hooked!"
+text = "Hooked!
+Reel in!"
+horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=317627071]
 position = Vector2(8, -8)
@@ -163,5 +173,19 @@ texture = SubResource("CanvasTexture_lrhn5")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1371019507]
 libraries/ = SubResource("AnimationLibrary_dp8ca")
 
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1654124579]
+visible = false
+offset_left = 57.0
+offset_top = -15.0
+offset_right = 61.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("3_lrhn5")
+theme_override_styles/background = SubResource("StyleBoxFlat_my7n2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lrhn5")
+step = 1.0
+fill_mode = 3
+show_percentage = false
+
 [connection signal="timeout" from="BobbingTimer" to="." method="_on_bobbing_timer_timeout"]
 [connection signal="timeout" from="SetHookTimer" to="." method="_on_set_hook_timer_timeout"]
+[connection signal="timeout" from="TugTimer" to="." method="_on_tug_timer_timeout"]
