@@ -145,6 +145,16 @@ text = "Hooked!
 Reel in!"
 horizontal_alignment = 1
 
+[node name="Nibble" type="Label" parent="." unique_id=831942370]
+offset_left = -95.0
+offset_top = -53.0
+offset_right = 123.0
+offset_bottom = -18.0
+theme_override_fonts/font = ExtResource("3_lrhn5")
+text = "Dang!
+Just a nibble..."
+horizontal_alignment = 1
+
 [node name="Rod" type="Sprite2D" parent="." unique_id=317627071]
 position = Vector2(2.9999986, -3.9999993)
 rotation = 1.0341445

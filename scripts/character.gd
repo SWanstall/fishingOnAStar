@@ -10,6 +10,7 @@ signal fish_processed
 @onready var fishing_ = $"Fishing!"
 @onready var hooked_ = $"Hooked!"
 @onready var bite_ = $"Bite!"
+@onready var nibble_ = $Nibble
 @onready var animation_player = $AnimationPlayer
 @onready var progress_bar = $ProgressBar
 @onready var tug_timer = $TugTimer
@@ -19,6 +20,7 @@ var hooked = false
 var bobbing = false
 var processed = true
 var tugging = false
+var failed = false
 
 var reeling_distance = 20
 var reeling_progress = 0
@@ -30,6 +32,7 @@ func _ready():
 	fishing_.visible = false
 	bite_.visible = false
 	hooked_.visible = false
+	nibble_.visible = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("lmb") and can_set_hook == true and bobbing == true:
@@ -45,6 +48,18 @@ func _process(delta):
 		await get_tree().create_timer(1.5).timeout
 		hooked_.visible = false
 		#hooked = false
+		
+	if Input.is_action_just_pressed("lmb") and can_set_hook == false and hooked == false and bobbing == true:
+		failed = true
+		can_set_hook = false
+		bite_.visible = false
+		print("Dang, just a nibble...")
+		nibble_.visible = true
+		bobbing = false
+		fishing_.visible = false
+		await get_tree().create_timer(2.0).timeout
+		nibble_.visible = false
+		failed = false
 		
 	if Input.is_action_just_pressed("rmb"):
 		processed = true
@@ -96,7 +111,7 @@ func _physics_process(delta):
 
 
 func _on_fishing_zone_fishing():
-	if bobbing == false and hooked == false and processed == true:
+	if bobbing == false and hooked == false and processed == true and failed == false:
 		rarity_value = randf_range(1.0, 100.0)
 		fish_rarity_set.emit(rarity_value)
 		#emit_signal("fish_rarity_set")
