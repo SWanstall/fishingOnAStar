@@ -4,6 +4,8 @@ var mouse_position = null
 
 @onready var character_body_2d = $CharacterBody2D
 
+@export var hook_scene: PackedScene
+
 var prev_pos: Vector2
 var velocity: Vector2
 
@@ -24,3 +26,9 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("rmb"):
 		print(velocity)
+		var hook = hook_scene.instantiate()
+
+		var rod_tip_position = character_body_2d.global_position
+
+		# Spawn the mob by adding it to the Main scene.
+		add_child(hook)

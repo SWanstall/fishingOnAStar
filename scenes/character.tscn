@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dm866fohapki0" path="res://scripts/character.gd" id="1_rkhd4"]
 [ext_resource type="FontFile" uid="uid://c1lxp1evsolc0" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_lrhn5"]
 [ext_resource type="Script" uid="uid://bgvuj4awpcsbo" path="res://scripts/rod.gd" id="4_my7n2"]
+[ext_resource type="PackedScene" uid="uid://c53qfowvsanrx" path="res://scenes/hook.tscn" id="5_0lw5n"]
 [ext_resource type="Texture2D" uid="uid://bcidm56mx2osu" path="res://assets/icon.svg" id="5_dp8ca"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjt0s"]
@@ -162,6 +163,7 @@ scale = Vector2(18.279125, 1.4651146)
 texture = SubResource("CanvasTexture_lrhn5")
 offset = Vector2(0.48459795, -0.12555781)
 script = ExtResource("4_my7n2")
+hook_scene = ExtResource("5_0lw5n")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Rod" unique_id=656261919]
 position = Vector2(0.93162763, -0.0276618)
