@@ -165,14 +165,14 @@ offset = Vector2(0.48459795, -0.12555781)
 script = ExtResource("4_my7n2")
 hook_scene = ExtResource("5_0lw5n")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Rod" unique_id=656261919]
-position = Vector2(0.93162763, -0.0276618)
+[node name="Rod" type="CharacterBody2D" parent="Rod" unique_id=656261919]
+position = Vector2(0.962, -0.028)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rod/CharacterBody2D" unique_id=286756053]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rod/Rod" unique_id=286756053]
 scale = Vector2(0.068461835, 0.7933673)
 shape = SubResource("CircleShape2D_my7n2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Rod/CharacterBody2D" unique_id=1392234709]
+[node name="Sprite2D" type="Sprite2D" parent="Rod/Rod" unique_id=1392234709]
 scale = Vector2(-0.0014693576, 0.024068378)
 texture = ExtResource("5_dp8ca")
 
