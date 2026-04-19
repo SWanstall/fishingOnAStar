@@ -23,6 +23,8 @@ var bobbing = false
 var processed = true
 var tugging = false
 var failed = false
+var bonus = false
+var landed = false
 
 var reeling_distance = 20
 var reeling_progress = 0
@@ -62,11 +64,14 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(2.0).timeout
 		nibble_.visible = false
 		failed = false
+		rod_sprite.shot = false
 		
-	if Input.is_action_just_pressed("rmb"):
+	if Input.is_action_just_pressed("lmb") and landed == true:
 		processed = true
 		print("processed = %s" % processed)
+		print("shot = %s" % rod_sprite.shot)
 		emit_signal("fish_processed")
+		landed = false
 		
 	if Input.is_action_just_pressed("scroll"):
 		#print("reeling...")
@@ -78,6 +83,7 @@ func _process(delta: float) -> void:
 			progress_bar.set_value_no_signal(reeling_percentage)
 			if reeling_progress >= reeling_distance:
 				emit_signal("fish_landed")
+				landed = true
 				reeling_progress = 0
 				reeling_percentage = (reeling_progress/reeling_distance)*100
 				progress_bar.set_value_no_signal(reeling_percentage)
@@ -144,10 +150,10 @@ func _on_set_hook_timer_timeout():
 	if hooked == false and bobbing == true and can_set_hook == true:
 		can_set_hook = false
 		bite_.visible = false
+		rod_sprite.shot = false
 		print("Dang, just a nibble...")
 		bobbing = false
 		fishing_.visible = false
-		rod_sprite.shot = false
 
 
 func tug_of_war():
@@ -173,9 +179,11 @@ func _on_tug_timer_timeout():
 
 func is_fishing():
 	print("fishing signal received!")
-	rod_sprite.shot = true
 	if bobbing == false and hooked == false and processed == true and failed == false:
+		rod_sprite.shot = true
 		rarity_value = randf_range(1.0, 100.0)
+		if bonus == true:
+			rarity_value = randf_range(50.0, 100.0)
 		fish_rarity_set.emit(rarity_value)
 		#emit_signal("fish_rarity_set")
 		var bobbing_time = randf_range(2.0, 5.0)
@@ -183,3 +191,8 @@ func is_fishing():
 		fishing_.visible = true
 		#animation_player.play("casting")
 		bobbing_timer.start(bobbing_time)
+
+
+func _on_bonus_zone_body_entered(body):
+	print("BONUS ZONE HIT!")
+	bonus = true
