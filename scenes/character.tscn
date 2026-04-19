@@ -157,9 +157,9 @@ Just a nibble..."
 horizontal_alignment = 1
 
 [node name="Rod" type="Sprite2D" parent="." unique_id=317627071]
-position = Vector2(2.9999986, -3.9999993)
+position = Vector2(3.1750202, -3.705789)
 rotation = 1.0341445
-scale = Vector2(18.279125, 1.4651146)
+scale = Vector2(40.50561, 1.4651146)
 texture = SubResource("CanvasTexture_lrhn5")
 offset = Vector2(0.48459795, -0.12555781)
 script = ExtResource("4_my7n2")

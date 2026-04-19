@@ -12,6 +12,8 @@ var speed = 200
 var prev_pos: Vector2
 var velocity: Vector2
 
+var shot = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -27,8 +29,9 @@ func _physics_process(delta):
 	velocity = (current_pos - prev_pos) / delta
 	prev_pos = current_pos
 	
-	if Input.is_action_just_pressed("rmb"):
-		print(velocity)
+	#if Input.is_action_just_pressed("rmb"):
+		#pass
+		#print(velocity)
 		#var hook = hook_scene.instantiate()
 #
 		#var rod_tip_position = character_body_2d.global_position
@@ -36,8 +39,11 @@ func _physics_process(delta):
 		## Spawn the mob by adding it to the Main scene.
 		#add_child(hook)
 	
-	if Input.is_action_just_pressed("rmb"):
+	if Input.is_action_just_released("rmb") and shot == false:
 		shoot()
+		shot = true
+		await get_tree().create_timer(0.5).timeout
+		shot = false
 
 #
 #func start(pos):
@@ -51,5 +57,5 @@ func shoot():
 	var current_pos = rod.global_position
 	var b = hook2.instantiate()
 	b.global_position = current_pos
-	b.velocity = velocity
+	b.velocity = velocity*0.5
 	get_tree().root.add_child(b)
