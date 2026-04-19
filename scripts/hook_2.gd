@@ -19,5 +19,5 @@ func _physics_process(delta):
 	if is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, speed)
 		
-	await get_tree().create_timer(3).timeout
-	queue_free()
+	#await get_tree().create_timer(3).timeout
+	#queue_free()

@@ -165,6 +165,13 @@ offset = Vector2(0.48459795, -0.12555781)
 script = ExtResource("4_my7n2")
 hook_scene = ExtResource("5_0lw5n")
 
+[node name="Line2D" type="Line2D" parent="Rod" unique_id=1688234563]
+position = Vector2(0.9653812, 0.13267012)
+scale = Vector2(0.0031691208, 0.08815346)
+points = PackedVector2Array(0, 2.2888184e-05)
+width = 6.0
+default_color = Color(0, 0, 0, 1)
+
 [node name="Rod" type="CharacterBody2D" parent="Rod" unique_id=656261919]
 position = Vector2(0.962, -0.028)
 
