@@ -78,3 +78,7 @@ func shoot():
 	if points < 2:
 		line_2d.add_point(current_pos, 1)
 	line_2d.set_point_position(1, b.global_position)
+
+
+#func _on_character_body_2d_fish_landed():
+	#get_tree().root.remove_child(b)

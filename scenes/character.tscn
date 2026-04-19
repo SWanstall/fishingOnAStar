@@ -193,6 +193,7 @@ step = 1.0
 fill_mode = 3
 show_percentage = false
 
+[connection signal="fish_landed" from="." to="RodSprite" method="_on_character_body_2d_fish_landed"]
 [connection signal="timeout" from="BobbingTimer" to="." method="_on_bobbing_timer_timeout"]
 [connection signal="timeout" from="SetHookTimer" to="." method="_on_set_hook_timer_timeout"]
 [connection signal="timeout" from="TugTimer" to="." method="_on_tug_timer_timeout"]
