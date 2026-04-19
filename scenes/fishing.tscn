@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://pa7ncide7ajv" path="res://scenes/character.tscn" id="1_h0ltw"]
 [ext_resource type="Script" uid="uid://bh7p7sdr066rv" path="res://scripts/fishing.gd" id="1_iuaqv"]
 [ext_resource type="Texture2D" uid="uid://cwakyatui8ror" path="res://assets/sprites/world_tileset.png" id="1_mu6gr"]
-[ext_resource type="PackedScene" uid="uid://dejc6jargxmdr" path="res://scenes/fishing_zone.tscn" id="3_86dh0"]
 [ext_resource type="PackedScene" uid="uid://cx7m4vvmtm0t5" path="res://scenes/killzone.tscn" id="4_e6o1d"]
 [ext_resource type="PackedScene" uid="uid://db4j2h6txbhga" path="res://scenes/fish.tscn" id="6_lsi5g"]
+[ext_resource type="PackedScene" uid="uid://djfj81jefn3yb" path="res://scenes/water_area.tscn" id="7_fehfy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mu6gr"]
 texture = ExtResource("1_mu6gr")
@@ -328,9 +328,6 @@ tile_set = SubResource("TileSet_e6o1d")
 position = Vector2(64, 0)
 zoom = Vector2(2.7, 2.7)
 
-[node name="FishingZone" parent="." unique_id=583405875 instance=ExtResource("3_86dh0")]
-position = Vector2(4, 7)
-
 [node name="Killzone" parent="." unique_id=2095247410 instance=ExtResource("4_e6o1d")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1796094090]
@@ -342,8 +339,10 @@ position = Vector2(33, 0)
 autoplay = "default"
 script = null
 
+[node name="WaterArea" parent="." unique_id=1290419432 instance=ExtResource("7_fehfy")]
+
+[connection signal="fishing" from="." to="Character" method="_on_fishing_fishing"]
 [connection signal="fish_landed" from="Character" to="." method="_on_character_fish_landed"]
 [connection signal="fish_processed" from="Character" to="." method="_on_character_fish_processed"]
 [connection signal="fish_rarity_set" from="Character" to="." method="_on_character_body_2d_fish_rarity_set"]
-[connection signal="fishing" from="FishingZone" to="." method="_on_fishing_zone_fishing"]
-[connection signal="fishing" from="FishingZone" to="Character" method="_on_fishing_zone_fishing"]
+[connection signal="body_entered" from="WaterArea" to="." method="_on_water_area_body_entered"]

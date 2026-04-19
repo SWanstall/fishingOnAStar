@@ -57,7 +57,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Rod:rotation")
+tracks/0/path = NodePath("RodSprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +73,7 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Rod:rotation")
+tracks/0/path = NodePath("RodSprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -152,7 +152,7 @@ text = "Dang!
 Just a nibble..."
 horizontal_alignment = 1
 
-[node name="Rod" type="Sprite2D" parent="." unique_id=317627071]
+[node name="RodSprite" type="Sprite2D" parent="." unique_id=317627071]
 position = Vector2(3.1750202, -3.705789)
 rotation = 1.0341445
 scale = Vector2(40.50561, 1.4651146)
@@ -161,7 +161,7 @@ offset = Vector2(0.48459795, -0.12555781)
 script = ExtResource("4_my7n2")
 hook_scene = ExtResource("5_0lw5n")
 
-[node name="Line2D" type="Line2D" parent="Rod" unique_id=1688234563]
+[node name="Line2D" type="Line2D" parent="RodSprite" unique_id=1688234563]
 light_mask = 2
 visibility_layer = 2
 position = Vector2(0.9653812, 0.13267012)
@@ -170,10 +170,10 @@ points = PackedVector2Array(0, 2.2888184e-05)
 width = 6.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Rod" type="CharacterBody2D" parent="Rod" unique_id=656261919]
+[node name="Rod" type="CharacterBody2D" parent="RodSprite" unique_id=656261919]
 position = Vector2(0.962, -0.028)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rod/Rod" unique_id=286756053]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RodSprite/Rod" unique_id=286756053]
 scale = Vector2(0.068461835, 0.7933673)
 shape = SubResource("CircleShape2D_my7n2")
 

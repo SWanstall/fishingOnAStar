@@ -14,6 +14,8 @@ signal fish_processed
 @onready var animation_player = $AnimationPlayer
 @onready var progress_bar = $ProgressBar
 @onready var tug_timer = $TugTimer
+@onready var rod_sprite = $RodSprite
+
 
 var can_set_hook = false
 var hooked = false
@@ -82,6 +84,7 @@ func _process(delta: float) -> void:
 				hooked = false
 				progress_bar.visible = false
 				tugging = false
+				rod_sprite.shot = false
 				tug_timer.stop()
 
 
@@ -110,16 +113,16 @@ func _physics_process(delta):
 	#print("velocity = %s" % velocity)
 
 
-func _on_fishing_zone_fishing():
-	if bobbing == false and hooked == false and processed == true and failed == false:
-		rarity_value = randf_range(1.0, 100.0)
-		fish_rarity_set.emit(rarity_value)
-		#emit_signal("fish_rarity_set")
-		var bobbing_time = randf_range(2.0, 5.0)
-		bobbing = true
-		fishing_.visible = true
-		animation_player.play("casting")
-		bobbing_timer.start(bobbing_time)
+#func _on_fishing_zone_fishing():
+	#if bobbing == false and hooked == false and processed == true and failed == false:
+		#rarity_value = randf_range(1.0, 100.0)
+		#fish_rarity_set.emit(rarity_value)
+		##emit_signal("fish_rarity_set")
+		#var bobbing_time = randf_range(2.0, 5.0)
+		#bobbing = true
+		#fishing_.visible = true
+		##animation_player.play("casting")
+		#bobbing_timer.start(bobbing_time)
 
 
 func _on_bobbing_timer_timeout():
@@ -144,6 +147,7 @@ func _on_set_hook_timer_timeout():
 		print("Dang, just a nibble...")
 		bobbing = false
 		fishing_.visible = false
+		rod_sprite.shot = false
 
 
 func tug_of_war():
@@ -165,3 +169,17 @@ func _on_tug_timer_timeout():
 	var reeling_percentage = (reeling_progress/reeling_distance)*100
 	progress_bar.set_value_no_signal(reeling_percentage)
 	
+
+
+func is_fishing():
+	print("fishing signal received!")
+	rod_sprite.shot = true
+	if bobbing == false and hooked == false and processed == true and failed == false:
+		rarity_value = randf_range(1.0, 100.0)
+		fish_rarity_set.emit(rarity_value)
+		#emit_signal("fish_rarity_set")
+		var bobbing_time = randf_range(2.0, 5.0)
+		bobbing = true
+		fishing_.visible = true
+		#animation_player.play("casting")
+		bobbing_timer.start(bobbing_time)

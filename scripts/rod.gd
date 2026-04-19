@@ -43,9 +43,9 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_released("rmb") and shot == false:
 		shoot()
-		shot = true
-		await get_tree().create_timer(0.5).timeout
-		shot = false
+		#shot = true
+		#await get_tree().create_timer(0.5).timeout
+		#shot = false
 		
 	if b:
 		await get_tree().create_timer(0.1).timeout

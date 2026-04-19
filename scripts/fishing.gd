@@ -1,5 +1,8 @@
 extends Node2D
 
+#signal fishing
+
+@onready var character = $Character
 @onready var fish: AnimatedSprite2D = $Fish
 
 var green = Color(0.2,1,0.2,1)
@@ -38,10 +41,11 @@ func _on_character_fish_landed() -> void:
 	fish.visible = true
 
 
-func _on_fishing_zone_fishing() -> void:
-	pass
-
-
 func _on_character_fish_processed() -> void:
 	fish_processed = true
 	fish.visible = false
+
+
+func _on_water_area_body_entered(body):
+	#print("FISHING! signal sent")
+	character.is_fishing()
