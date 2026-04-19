@@ -5,7 +5,6 @@
 [ext_resource type="FontFile" uid="uid://c1lxp1evsolc0" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_lrhn5"]
 [ext_resource type="Script" uid="uid://bgvuj4awpcsbo" path="res://scripts/rod.gd" id="4_my7n2"]
 [ext_resource type="PackedScene" uid="uid://c53qfowvsanrx" path="res://scenes/hook.tscn" id="5_0lw5n"]
-[ext_resource type="Texture2D" uid="uid://bcidm56mx2osu" path="res://assets/icon.svg" id="5_dp8ca"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjt0s"]
 atlas = ExtResource("1_glpr6")
@@ -46,10 +45,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_glpr6"]
 radius = 5.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lrhn5"]
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_lrhn5"]
-specular_texture = SubResource("CompressedTexture2D_lrhn5")
 specular_color = Color(0.64616024, 0.42132297, 0.2053571, 1)
 specular_shininess = 0.45
 
@@ -166,6 +162,8 @@ script = ExtResource("4_my7n2")
 hook_scene = ExtResource("5_0lw5n")
 
 [node name="Line2D" type="Line2D" parent="Rod" unique_id=1688234563]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(0.9653812, 0.13267012)
 scale = Vector2(0.0031691208, 0.08815346)
 points = PackedVector2Array(0, 2.2888184e-05)
@@ -178,10 +176,6 @@ position = Vector2(0.962, -0.028)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rod/Rod" unique_id=286756053]
 scale = Vector2(0.068461835, 0.7933673)
 shape = SubResource("CircleShape2D_my7n2")
-
-[node name="Sprite2D" type="Sprite2D" parent="Rod/Rod" unique_id=1392234709]
-scale = Vector2(-0.0014693576, 0.024068378)
-texture = ExtResource("5_dp8ca")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1371019507]
 libraries/ = SubResource("AnimationLibrary_dp8ca")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://du87cak03dg1s"]
 
 [ext_resource type="Script" uid="uid://dhaitbgqmp1j4" path="res://scripts/hook_2.gd" id="1_cl6ks"]
-[ext_resource type="Texture2D" uid="uid://bcidm56mx2osu" path="res://assets/icon.svg" id="1_ovdff"]
+[ext_resource type="Texture2D" uid="uid://c5bnirg308iya" path="res://assets/sprites/Hook.png" id="2_cl6ks"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cl6ks"]
 
@@ -14,5 +14,6 @@ script = ExtResource("1_cl6ks")
 shape = SubResource("CircleShape2D_cl6ks")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1937586242]
-scale = Vector2(0.15999985, 0.15999985)
-texture = ExtResource("1_ovdff")
+position = Vector2(0, 4)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_cl6ks")
