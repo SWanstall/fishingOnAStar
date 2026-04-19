@@ -324,8 +324,8 @@ tile_set = SubResource("TileSet_e6o1d")
 [node name="Character" parent="." unique_id=1417100782 instance=ExtResource("1_h0ltw")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1207923311]
-position = Vector2(77, -4)
-zoom = Vector2(2.6, 2.6)
+position = Vector2(64, 0)
+zoom = Vector2(2.7, 2.7)
 
 [node name="FishingZone" parent="." unique_id=583405875 instance=ExtResource("3_86dh0")]
 position = Vector2(4, 7)

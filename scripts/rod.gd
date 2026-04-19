@@ -14,7 +14,7 @@ var prev_pos: Vector2
 var velocity: Vector2
 
 var shot = false
-var b = hook2.instantiate()
+var b = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,6 +65,9 @@ func _physics_process(delta):
 
 
 func shoot():
+	if not b:
+		b = hook2.instantiate()
+	
 	# "Muzzle" is a Marker2D placed at the barrel of the gun.
 	var current_pos = rod.global_position
 	#var b = hook2.instantiate()

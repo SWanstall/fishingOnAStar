@@ -34,7 +34,7 @@ func _ready():
 	hooked_.visible = false
 	nibble_.visible = false
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("lmb") and can_set_hook == true and bobbing == true:
 		print("HOOKED!")
 		progress_bar.visible = true
