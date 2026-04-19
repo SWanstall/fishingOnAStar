@@ -117,6 +117,7 @@ one_shot = true
 [node name="TugTimer" type="Timer" parent="." unique_id=1231879873]
 
 [node name="Fishing!" type="Label" parent="." unique_id=154609319]
+z_index = 2
 offset_left = -57.0
 offset_top = -51.0
 offset_right = 59.0
@@ -125,6 +126,7 @@ theme_override_fonts/font = ExtResource("3_lrhn5")
 text = "Fishing!"
 
 [node name="Bite!" type="Label" parent="." unique_id=1265115362]
+z_index = 2
 offset_left = -33.0
 offset_top = -51.0
 offset_right = 83.0
@@ -133,6 +135,7 @@ theme_override_fonts/font = ExtResource("3_lrhn5")
 text = "Bite!"
 
 [node name="Hooked!" type="Label" parent="." unique_id=1161779799]
+z_index = 2
 offset_left = -54.0
 offset_top = -51.0
 offset_right = 54.0
@@ -143,6 +146,7 @@ Reel in!"
 horizontal_alignment = 1
 
 [node name="Nibble" type="Label" parent="." unique_id=831942370]
+z_index = 2
 offset_left = -95.0
 offset_top = -53.0
 offset_right = 123.0
