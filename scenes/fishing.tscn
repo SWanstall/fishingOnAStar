@@ -343,7 +343,7 @@ script = null
 [node name="WaterArea" parent="." unique_id=1290419432 instance=ExtResource("7_fehfy")]
 
 [node name="BonusZone" parent="." unique_id=1766672678 instance=ExtResource("7_sgs1c")]
-position = Vector2(152, 32)
+position = Vector2(40, 32)
 
 [connection signal="fish_landed" from="Character" to="." method="_on_character_fish_landed"]
 [connection signal="fish_processed" from="Character" to="." method="_on_character_fish_processed"]

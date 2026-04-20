@@ -28,6 +28,7 @@ var landed = false
 
 var reeling_distance = 20
 var reeling_progress = 0
+var final_fish_rarity = 0.0
 
 const SPEED = 5000.0
 const JUMP_VELOCITY = -200
@@ -40,6 +41,10 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("lmb") and can_set_hook == true and bobbing == true:
+		if bonus == false:
+			fish_rarity_set.emit(rarity_value)
+			final_fish_rarity = rarity_value
+		bonus = false
 		print("HOOKED!")
 		progress_bar.visible = true
 		hooked = true
@@ -158,7 +163,7 @@ func _on_set_hook_timer_timeout():
 
 func tug_of_war():
 	#print("tug of war!!!!!!!")
-	if rarity_value >= 80 and hooked == true and tugging == false:
+	if final_fish_rarity >= 80 and hooked == true and tugging == false:
 		var tugging_time = randf_range(0.4, 0.8)
 		tug_timer.start(tugging_time)
 		#print("tugging")
@@ -181,10 +186,14 @@ func is_fishing():
 	print("fishing signal received!")
 	if bobbing == false and hooked == false and processed == true and failed == false:
 		rod_sprite.shot = true
+		#if bonus == true:
+			##rarity_value = randf_range(50.0, 100.0)
+			#print("bonus then fishing")
+			#print("fishing bonus from true = %s" % bonus)
+			#rarity_value = randf_range(50.0, 100.0)
+			#bonus = false
+		#else:
 		rarity_value = randf_range(1.0, 100.0)
-		if bonus == true:
-			rarity_value = randf_range(50.0, 100.0)
-		fish_rarity_set.emit(rarity_value)
 		#emit_signal("fish_rarity_set")
 		var bobbing_time = randf_range(2.0, 5.0)
 		bobbing = true
@@ -194,5 +203,10 @@ func is_fishing():
 
 
 func _on_bonus_zone_body_entered(body):
-	print("BONUS ZONE HIT!")
-	bonus = true
+	if processed == true:
+		bonus = true
+		print("BONUS ZONE HIT!")
+		rarity_value = randf_range(50.0, 100.0)
+		fish_rarity_set.emit(rarity_value)
+		final_fish_rarity = rarity_value
+		print("rarity value bonus zone = %s" % rarity_value)
