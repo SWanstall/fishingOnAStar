@@ -25,6 +25,11 @@ func _ready():
 func _process(delta):
 	mouse_position = get_global_mouse_position()
 	look_at(mouse_position)
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		print("beep")
+		b.queue_free()
+		line_2d.remove_point(1)
 
 func _physics_process(delta):
 	var current_pos = rod.global_position
@@ -48,11 +53,16 @@ func _physics_process(delta):
 		#await get_tree().create_timer(0.5).timeout
 		#shot = false
 		
-	if b:
+	if is_instance_valid(b):
 		await get_tree().create_timer(0.1).timeout
-		var local_pos_1 = line_2d.to_local(b.global_position)
+		if is_instance_valid(b):
+			var local_pos_1 = line_2d.to_local(b.global_position)
+			line_2d.set_point_position(1, local_pos_1)
+	#if b:
+		#await get_tree().create_timer(0.1).timeout
+		#var local_pos_1 = line_2d.to_local(b.global_position)
+		#line_2d.set_point_position(1, local_pos_1)
 		#var local_pos_0 = line_2d.to_local(current_pos)
-		line_2d.set_point_position(1, local_pos_1)
 		#line_2d.set_point_position(0, local_pos_0)
 		
 		#line_2d.set_point_position(1, b.global_position)
