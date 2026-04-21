@@ -1,11 +1,14 @@
 extends Sprite2D
 
+signal stop_fishing
+
 var mouse_position = null
 
 @onready var rod = $Rod
 @onready var line_2d = $Line2D
 
 @export var hook_scene: PackedScene
+@export var hook_velocity_mod = 0.5
 
 var hook2 = preload("res://scenes/hook_2.tscn")
 var speed = 200
@@ -26,10 +29,8 @@ func _process(delta):
 	mouse_position = get_global_mouse_position()
 	look_at(mouse_position)
 	
-	if Input.is_action_just_pressed("ui_cancel") and is_instance_valid(b):
-		print("beep")
-		b.queue_free()
-		line_2d.remove_point(1)
+	if Input.is_action_just_pressed("ui_cancel"):
+		reset()
 
 func _physics_process(delta):
 	var current_pos = rod.global_position
@@ -46,6 +47,9 @@ func _physics_process(delta):
 		## Spawn the mob by adding it to the Main scene.
 		#add_child(hook)
 	
+	if Input.is_action_just_pressed("rmb") and shot == true:
+		reset()
+	
 	if Input.is_action_just_released("rmb") and shot == false:
 		print("shoot")
 		shoot()
@@ -58,6 +62,7 @@ func _physics_process(delta):
 		if is_instance_valid(b):
 			var local_pos_1 = line_2d.to_local(b.global_position)
 			line_2d.set_point_position(1, local_pos_1)
+			line_2d.visible = true
 	#if b:
 		#await get_tree().create_timer(0.1).timeout
 		#var local_pos_1 = line_2d.to_local(b.global_position)
@@ -83,7 +88,7 @@ func shoot():
 	var current_pos = rod.global_position
 	#var b = hook2.instantiate()
 	b.global_position = current_pos
-	b.velocity = velocity*0.5
+	b.velocity = velocity * hook_velocity_mod
 	var points = line_2d.get_point_count()
 	get_tree().root.add_child(b)
 	if points < 2:
@@ -93,3 +98,13 @@ func shoot():
 
 #func _on_character_body_2d_fish_landed():
 	#get_tree().root.remove_child(b)
+	
+	
+func reset():
+	if is_instance_valid(b):
+		print("reset")
+		b.queue_free()
+		line_2d.remove_point(1)
+		line_2d.visible = false
+		#print(line_2d.get_point_count())
+		stop_fishing.emit()

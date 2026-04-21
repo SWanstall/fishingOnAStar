@@ -66,6 +66,7 @@ func _process(delta: float) -> void:
 		nibble_.visible = true
 		bobbing = false
 		fishing_.visible = false
+		rod_sprite.reset()
 		await get_tree().create_timer(2.0).timeout
 		nibble_.visible = false
 		failed = false
@@ -77,6 +78,7 @@ func _process(delta: float) -> void:
 		print("shot = %s" % rod_sprite.shot)
 		emit_signal("fish_processed")
 		landed = false
+		rod_sprite.reset()
 		
 	if Input.is_action_just_pressed("scroll"):
 		#print("reeling...")
@@ -202,6 +204,15 @@ func is_fishing():
 		bobbing_timer.start(bobbing_time)
 
 
+#func is_not_fishing():
+	#can_set_hook = false
+	#bite_.visible = false
+	#rod_sprite.shot = false
+	#print("No longer fishing")
+	#bobbing = false
+	#fishing_.visible = false
+
+
 func _on_bonus_zone_body_entered(body):
 	if processed == true:
 		bonus = true
@@ -210,3 +221,12 @@ func _on_bonus_zone_body_entered(body):
 		fish_rarity_set.emit(rarity_value)
 		final_fish_rarity = rarity_value
 		print("rarity value bonus zone = %s" % rarity_value)
+
+
+func _on_rod_sprite_stop_fishing():
+	can_set_hook = false
+	bite_.visible = false
+	rod_sprite.shot = false
+	print("No longer fishing")
+	bobbing = false
+	fishing_.visible = false

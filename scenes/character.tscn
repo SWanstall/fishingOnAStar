@@ -164,6 +164,7 @@ texture = SubResource("CanvasTexture_lrhn5")
 offset = Vector2(0.48459795, -0.12555781)
 script = ExtResource("4_my7n2")
 hook_scene = ExtResource("5_0lw5n")
+hook_velocity_mod = 0.36
 
 [node name="Line2D" type="Line2D" parent="RodSprite" unique_id=1688234563]
 light_mask = 2
@@ -201,3 +202,4 @@ show_percentage = false
 [connection signal="timeout" from="BobbingTimer" to="." method="_on_bobbing_timer_timeout"]
 [connection signal="timeout" from="SetHookTimer" to="." method="_on_set_hook_timer_timeout"]
 [connection signal="timeout" from="TugTimer" to="." method="_on_tug_timer_timeout"]
+[connection signal="stop_fishing" from="RodSprite" to="." method="_on_rod_sprite_stop_fishing"]

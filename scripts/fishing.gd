@@ -49,3 +49,8 @@ func _on_character_fish_processed() -> void:
 func _on_water_area_body_entered(body):
 	#print("FISHING! signal sent")
 	character.is_fishing()
+
+
+#func _on_bonus_zone_body_exited(body):
+	#print("body exited")
+	#character.is_not_fishing()

@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-var speed = 300
-var new_gravity = Vector2(0.0, 980.0) # Original gravity is (0.0, 980.0), change as required
+@export var speed = 300
+@export var new_gravity = Vector2(0.0, 980.0) # Original gravity is (0.0, 980.0), change as required
 
 #func get_input():
 	#var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
