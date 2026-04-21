@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 		print("shot = %s" % rod_sprite.shot)
 		emit_signal("fish_processed")
 		landed = false
-		rod_sprite.reset()
+		#rod_sprite.reset()
 		
 	if Input.is_action_just_pressed("scroll"):
 		#print("reeling...")
@@ -98,6 +98,7 @@ func _process(delta: float) -> void:
 				progress_bar.visible = false
 				tugging = false
 				rod_sprite.shot = false
+				rod_sprite.reset()
 				tug_timer.stop()
 
 
@@ -230,3 +231,4 @@ func _on_rod_sprite_stop_fishing():
 	print("No longer fishing")
 	bobbing = false
 	fishing_.visible = false
+	bonus = false
