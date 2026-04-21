@@ -47,7 +47,7 @@ func _physics_process(delta):
 		## Spawn the mob by adding it to the Main scene.
 		#add_child(hook)
 	
-	if Input.is_action_just_pressed("rmb") and shot == true:
+	if Input.is_action_just_pressed("rmb"): #and shot == true:
 		reset()
 	
 	if Input.is_action_just_released("rmb") and shot == false:
