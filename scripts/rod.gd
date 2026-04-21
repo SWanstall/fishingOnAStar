@@ -26,7 +26,7 @@ func _process(delta):
 	mouse_position = get_global_mouse_position()
 	look_at(mouse_position)
 	
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") and is_instance_valid(b):
 		print("beep")
 		b.queue_free()
 		line_2d.remove_point(1)
