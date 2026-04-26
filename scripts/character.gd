@@ -82,6 +82,8 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("scroll"):
 		#print("reeling...")
+		rod_sprite.reeling = true
+		rod_sprite.scrolling = true
 		if hooked == true:
 			#print("hooked and reeling")
 			tug_of_war()
@@ -205,13 +207,13 @@ func is_fishing():
 		bobbing_timer.start(bobbing_time)
 
 
-#func is_not_fishing():
-	#can_set_hook = false
-	#bite_.visible = false
-	#rod_sprite.shot = false
-	#print("No longer fishing")
-	#bobbing = false
-	#fishing_.visible = false
+func is_not_fishing():
+	can_set_hook = false
+	bite_.visible = false
+	rod_sprite.shot = false
+	print("No longer fishing")
+	bobbing = false
+	fishing_.visible = false
 
 
 func _on_bonus_zone_body_entered(body):

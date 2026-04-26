@@ -17,6 +17,8 @@ var prev_pos: Vector2
 var velocity: Vector2
 
 var shot = false
+var reeling = false
+var scrolling = false
 var b = null
 
 # Called when the node enters the scene tree for the first time.
@@ -31,6 +33,20 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		reset()
+		#if is_instance_valid(b):
+			#reeling = false
+		
+	if is_instance_valid(b):
+		if reeling == true:
+			b.reeling_func()
+			reeling = false
+			
+		if scrolling == true:
+			b.scrolling_func()
+			scrolling = false
+			
+		if b.rope_length <= 10:
+			pass # Fish landed check
 
 func _physics_process(delta):
 	var current_pos = rod.global_position
@@ -49,6 +65,8 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("rmb"): #and shot == true:
 		reset()
+		if is_instance_valid(b):
+			b.reeling = false
 	
 	if Input.is_action_just_released("rmb") and shot == false:
 		print("shoot")
@@ -83,6 +101,7 @@ func _physics_process(delta):
 func shoot():
 	if not b:
 		b = hook2.instantiate()
+		b.rod = rod
 	
 	# "Muzzle" is a Marker2D placed at the barrel of the gun.
 	var current_pos = rod.global_position
