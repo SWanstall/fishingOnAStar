@@ -18,6 +18,7 @@ var velocity: Vector2
 
 var shot = false
 var reeling = false
+var reeled_in = false
 var scrolling = false
 var b = null
 
@@ -43,10 +44,12 @@ func _process(delta):
 			
 		if scrolling == true:
 			b.scrolling_func()
+			if b.rope_length <= 10:
+				reeled_in = true
+			else:
+				reeled_in = false
 			scrolling = false
-			
-		if b.rope_length <= 10:
-			pass # Fish landed check
+
 
 func _physics_process(delta):
 	var current_pos = rod.global_position
@@ -65,8 +68,12 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("rmb"): #and shot == true:
 		reset()
+		reeling = false
+		scrolling = false
+		reeled_in = false
 		if is_instance_valid(b):
 			b.reeling = false
+			b.scrolling = false
 	
 	if Input.is_action_just_released("rmb") and shot == false:
 		print("shoot")
@@ -104,6 +111,8 @@ func shoot():
 		b.rod = rod
 	
 	# "Muzzle" is a Marker2D placed at the barrel of the gun.
+	b.scrolling = false
+	b.reeling = false
 	var current_pos = rod.global_position
 	#var b = hook2.instantiate()
 	b.global_position = current_pos

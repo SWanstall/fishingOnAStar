@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var speed = 300
 @export var new_gravity = Vector2(0.0, 980.0) # Original gravity is (0.0, 980.0), change as required
-#@export var reel_perc = 10
+@export var reel_perc = 0.1
 
 var gravity_value = 900.0
 var rope_length = 300.0
@@ -67,7 +67,12 @@ func _physics_process(delta):
 				rope_length = 10
 				scrolling = false
 			else:
-				rope_length -= reel_speed * delta
+				#rope_length -= reel_speed * delta
+				if rope_length > 150:
+					rope_length -= 2 + distance * 0.5 * reel_perc
+				else:
+					rope_length -= 2 + distance * reel_perc * 2
+				#await get_tree().create_timer(0.01).timeout
 			print(rope_length)
 			scrolling = false
 		# 5. Reel in

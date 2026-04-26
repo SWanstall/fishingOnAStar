@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 			final_fish_rarity = rarity_value
 		bonus = false
 		print("HOOKED!")
-		progress_bar.visible = true
+		#progress_bar.visible = true
 		hooked = true
 		hooked_.visible = true
 		bobbing = false
@@ -84,24 +84,35 @@ func _process(delta: float) -> void:
 		#print("reeling...")
 		rod_sprite.reeling = true
 		rod_sprite.scrolling = true
-		if hooked == true:
+		if hooked == true and rod_sprite.reeled_in == true:
 			#print("hooked and reeling")
-			tug_of_war()
-			reeling_progress = reeling_progress + 1.0
-			var reeling_percentage = (reeling_progress/reeling_distance)*100
-			progress_bar.set_value_no_signal(reeling_percentage)
-			if reeling_progress >= reeling_distance:
-				emit_signal("fish_landed")
-				landed = true
-				reeling_progress = 0
-				reeling_percentage = (reeling_progress/reeling_distance)*100
-				progress_bar.set_value_no_signal(reeling_percentage)
-				hooked = false
-				progress_bar.visible = false
-				tugging = false
-				rod_sprite.shot = false
-				rod_sprite.reset()
-				tug_timer.stop()
+			emit_signal("fish_landed")
+			landed = true
+			hooked = false
+			progress_bar.visible = false
+			tugging = false
+			rod_sprite.shot = false
+			rod_sprite.reset()
+			tug_timer.stop()
+			
+		#if hooked == true:
+			##print("hooked and reeling")
+			#tug_of_war()
+			#reeling_progress = reeling_progress + 1.0
+			#var reeling_percentage = (reeling_progress/reeling_distance)*100
+			#progress_bar.set_value_no_signal(reeling_percentage)
+			#if reeling_progress >= reeling_distance:
+				#emit_signal("fish_landed")
+				#landed = true
+				#reeling_progress = 0
+				#reeling_percentage = (reeling_progress/reeling_distance)*100
+				#progress_bar.set_value_no_signal(reeling_percentage)
+				#hooked = false
+				#progress_bar.visible = false
+				#tugging = false
+				#rod_sprite.shot = false
+				#rod_sprite.reset()
+				#tug_timer.stop()
 
 
 func _physics_process(delta):
