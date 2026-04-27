@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed = 300
 @export var new_gravity = Vector2(0.0, 980.0) # Original gravity is (0.0, 980.0), change as required
 @export var reel_perc = 0.1
+@onready var fish = $Fish
 
 var gravity_value = 900.0
 var rope_length = 300.0
@@ -17,6 +18,9 @@ var distance = null
 
 var reeling = false
 var scrolling = false
+
+func _ready():
+	fish.visible = false
 
 #func get_input():
 	#var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

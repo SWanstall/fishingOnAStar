@@ -22,6 +22,11 @@ var reeled_in = false
 var scrolling = false
 var b = null
 
+var fish_rarity_calldown
+var green = Color(0.2,1,0.2,1)
+var red = Color(1,0.2,0.2,1)
+var blue = Color(1,0.5,0.0,1)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -122,6 +127,8 @@ func shoot():
 	if points < 2:
 		line_2d.add_point(current_pos, 1)
 	line_2d.set_point_position(1, b.global_position)
+	#var beep = b.get_node("Fish")
+	#beep.modulate = Color(1,0.2,0.2,1)
 
 
 #func _on_character_body_2d_fish_landed():
@@ -136,3 +143,21 @@ func reset():
 		line_2d.visible = false
 		#print(line_2d.get_point_count())
 		stop_fishing.emit()
+		
+
+func fishappear(fish_rarity_from_character):
+	var fish_on_hook = b.get_node("Fish")
+	var hue
+	
+	if fish_rarity_from_character >= 60 and fish_rarity_from_character < 80:
+		hue = red
+	elif fish_rarity_from_character >= 80:
+		hue = blue
+	else:
+		hue = green
+	
+	print("fish rarity = %s" % fish_rarity_from_character)
+	
+	fish_on_hook.modulate = hue
+	fish_on_hook.visible = true
+	#beep.modulate = Color(1,0.2,0.2,1)

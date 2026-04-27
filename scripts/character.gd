@@ -45,6 +45,7 @@ func _process(delta: float) -> void:
 			fish_rarity_set.emit(rarity_value)
 			final_fish_rarity = rarity_value
 		bonus = false
+		rod_sprite.fishappear(final_fish_rarity)
 		print("HOOKED!")
 		#progress_bar.visible = true
 		hooked = true

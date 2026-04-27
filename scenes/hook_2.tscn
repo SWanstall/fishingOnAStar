@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhaitbgqmp1j4" path="res://scripts/hook_2.gd" id="1_cl6ks"]
 [ext_resource type="Texture2D" uid="uid://c5bnirg308iya" path="res://assets/sprites/Hook.png" id="2_cl6ks"]
+[ext_resource type="PackedScene" uid="uid://db4j2h6txbhga" path="res://scenes/fish.tscn" id="3_bea6c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cl6ks"]
 
@@ -17,3 +18,7 @@ shape = SubResource("CircleShape2D_cl6ks")
 position = Vector2(0, 4)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_cl6ks")
+
+[node name="Fish" parent="." unique_id=902702804 instance=ExtResource("3_bea6c")]
+visible = false
+position = Vector2(0, 3)
