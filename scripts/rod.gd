@@ -146,18 +146,19 @@ func reset():
 		
 
 func fishappear(fish_rarity_from_character):
-	var fish_on_hook = b.get_node("Fish")
-	var hue
-	
-	if fish_rarity_from_character >= 60 and fish_rarity_from_character < 80:
-		hue = red
-	elif fish_rarity_from_character >= 80:
-		hue = blue
-	else:
-		hue = green
-	
-	print("fish rarity = %s" % fish_rarity_from_character)
-	
-	fish_on_hook.modulate = hue
-	fish_on_hook.visible = true
-	#beep.modulate = Color(1,0.2,0.2,1)
+	if is_instance_valid(b):
+		var fish_on_hook = b.get_node("Fish")
+		var hue
+		
+		if fish_rarity_from_character >= 60 and fish_rarity_from_character < 80:
+			hue = red
+		elif fish_rarity_from_character >= 80:
+			hue = blue
+		else:
+			hue = green
+		
+		print("fish rarity = %s" % fish_rarity_from_character)
+		
+		fish_on_hook.modulate = hue
+		fish_on_hook.visible = true
+		#beep.modulate = Color(1,0.2,0.2,1)
