@@ -74,6 +74,7 @@ func _process(delta: float) -> void:
 		rod_sprite.shot = false
 		
 	if Input.is_action_just_pressed("lmb") and landed == true:
+		rod_sprite.fish_on_hook = false
 		processed = true
 		print("processed = %s" % processed)
 		print("shot = %s" % rod_sprite.shot)

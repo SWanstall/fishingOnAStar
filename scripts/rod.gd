@@ -26,6 +26,7 @@ var fish_rarity_calldown
 var green = Color(0.2,1,0.2,1)
 var red = Color(1,0.2,0.2,1)
 var blue = Color(1,0.5,0.0,1)
+var fish_on_hook = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -71,7 +72,7 @@ func _physics_process(delta):
 		## Spawn the mob by adding it to the Main scene.
 		#add_child(hook)
 	
-	if Input.is_action_just_pressed("rmb"): #and shot == true:
+	if Input.is_action_just_pressed("rmb") and fish_on_hook == false: #and shot == true:
 		reset()
 		reeling = false
 		scrolling = false
@@ -80,7 +81,7 @@ func _physics_process(delta):
 			b.reeling = false
 			b.scrolling = false
 	
-	if Input.is_action_just_released("rmb") and shot == false:
+	if Input.is_action_just_released("rmb") and shot == false and fish_on_hook == false:
 		print("shoot")
 		shoot()
 		#shot = true
@@ -147,6 +148,7 @@ func reset():
 
 func fishappear(fish_rarity_from_character):
 	if is_instance_valid(b):
+		fish_on_hook = true
 		var fish_on_hook = b.get_node("Fish")
 		var hue
 		
