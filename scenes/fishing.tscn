@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://db4j2h6txbhga" path="res://scenes/fish.tscn" id="6_lsi5g"]
 [ext_resource type="PackedScene" uid="uid://djfj81jefn3yb" path="res://scenes/water_area.tscn" id="7_fehfy"]
 [ext_resource type="PackedScene" uid="uid://dme1nl3t0ntpf" path="res://scenes/bonus_zone.tscn" id="7_sgs1c"]
+[ext_resource type="PackedScene" uid="uid://bq5eooga6ghn2" path="res://scenes/biome.tscn" id="8_sgs1c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mu6gr"]
 texture = ExtResource("1_mu6gr")
@@ -347,6 +348,25 @@ scale = Vector2(2.597267, 1.0365225)
 [node name="BonusZone" parent="." unique_id=1766672678 instance=ExtResource("7_sgs1c")]
 position = Vector2(152, 32)
 
+[node name="Biome" parent="." unique_id=355775035 instance=ExtResource("8_sgs1c")]
+z_index = 1
+position = Vector2(64, 87.99999)
+scale = Vector2(4.7200003, 5.56)
+
+[node name="Biome2" parent="." unique_id=272206889 instance=ExtResource("8_sgs1c")]
+modulate = Color(0.827451, 1, 0, 1)
+z_index = 1
+position = Vector2(240, 88)
+scale = Vector2(12.878402, 5.3535986)
+biome = 1
+
+[node name="Biome3" parent="." unique_id=1261034136 instance=ExtResource("8_sgs1c")]
+modulate = Color(0.08627451, 1, 0, 1)
+z_index = 1
+position = Vector2(616, 96)
+scale = Vector2(24.893234, 5.101018)
+biome = 2
+
 [connection signal="fish_landed" from="Character" to="." method="_on_character_fish_landed"]
 [connection signal="fish_processed" from="Character" to="." method="_on_character_fish_processed"]
 [connection signal="fish_rarity_set" from="Character" to="." method="_on_character_body_2d_fish_rarity_set"]
@@ -354,3 +374,6 @@ position = Vector2(152, 32)
 [connection signal="body_exited" from="WaterArea" to="." method="_on_water_area_body_exited"]
 [connection signal="body_entered" from="BonusZone" to="Character" method="_on_bonus_zone_body_entered"]
 [connection signal="body_exited" from="BonusZone" to="." method="_on_bonus_zone_body_exited"]
+[connection signal="biome_entered" from="Biome" to="." method="_on_biome_biome_entered"]
+[connection signal="biome_entered" from="Biome2" to="." method="_on_biome_2_biome_entered"]
+[connection signal="biome_entered" from="Biome3" to="." method="_on_biome_3_biome_entered"]

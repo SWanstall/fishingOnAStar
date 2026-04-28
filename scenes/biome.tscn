@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bq5eooga6ghn2"]
+
+[ext_resource type="Script" uid="uid://c8mrx7so1uiby" path="res://scenes/biome.gd" id="1_torrt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ql0yf"]
+
+[node name="Biome" type="Area2D" unique_id=355775035]
+collision_mask = 16
+script = ExtResource("1_torrt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=538704541]
+shape = SubResource("RectangleShape2D_ql0yf")
+debug_color = Color(0.9466861, 0.0523986, 0.563356, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

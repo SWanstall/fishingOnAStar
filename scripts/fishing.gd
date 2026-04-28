@@ -13,9 +13,11 @@ var fish_rarity = 0
 var hue = green
 var fish_processed = false
 
+var current_biome = null
+
 # Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#pass # Replace with function body.
+func _ready() -> void:
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,3 +56,18 @@ func _on_water_area_body_entered(body):
 func _on_water_area_body_exited(body):
 	print("body exited")
 	character.is_not_fishing()
+
+
+func _on_biome_biome_entered(biome):
+	current_biome = biome
+	print(current_biome)
+
+
+func _on_biome_2_biome_entered(biome):
+	current_biome = biome
+	print(current_biome)
+
+
+func _on_biome_3_biome_entered(biome):
+	current_biome = biome
+	print(current_biome)
