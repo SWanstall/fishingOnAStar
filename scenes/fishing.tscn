@@ -328,7 +328,7 @@ tile_set = SubResource("TileSet_e6o1d")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1207923311]
 position = Vector2(64, 0)
-zoom = Vector2(2.7, 2.7)
+zoom = Vector2(1.615, 1.615)
 
 [node name="Killzone" parent="." unique_id=2095247410 instance=ExtResource("4_e6o1d")]
 
