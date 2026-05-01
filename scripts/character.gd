@@ -42,10 +42,10 @@ func _ready():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("lmb") and can_set_hook == true and bobbing == true:
 		if bonus == false:
-			fish_rarity_set.emit(rarity_value)
+			fish_rarity_set.emit(rarity_value) # add biome to this signal
 			final_fish_rarity = rarity_value
 		bonus = false
-		rod_sprite.fishappear(final_fish_rarity)
+		rod_sprite.fishappear(final_fish_rarity) # add biome to this call
 		print("HOOKED!")
 		#progress_bar.visible = true
 		hooked = true

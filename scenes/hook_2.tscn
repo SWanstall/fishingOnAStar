@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://db4j2h6txbhga" path="res://scenes/fish.tscn" id="3_bea6c"]
 [ext_resource type="Texture2D" uid="uid://q7qkcrd8v4n6" path="res://assets/sprites/slime_purple.png" id="4_kpcmv"]
 [ext_resource type="Texture2D" uid="uid://dbw3fyu658r43" path="res://assets/sprites/coin.png" id="5_dahak"]
+[ext_resource type="Texture2D" uid="uid://xrir0sdus7sp" path="res://assets/sprites/knight.png" id="5_jcj35"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cl6ks"]
 
@@ -24,6 +25,22 @@ region = Rect2(48, 24, 24, 24)
 atlas = ExtResource("4_kpcmv")
 region = Rect2(72, 24, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xo7b"]
+atlas = ExtResource("5_jcj35")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h5w8"]
+atlas = ExtResource("5_jcj35")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wykag"]
+atlas = ExtResource("5_jcj35")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydiaq"]
+atlas = ExtResource("5_jcj35")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7xo7b"]
 animations = [{
 "frames": [{
@@ -41,6 +58,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xo7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h5w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wykag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydiaq")
+}],
+"loop": true,
+"name": &"test",
 "speed": 5.0
 }]
 
