@@ -91,7 +91,7 @@ func _physics_process(delta):
 		
 	if is_instance_valid(b):
 		await get_tree().create_timer(0.1).timeout
-		if is_instance_valid(b):
+		if is_instance_valid(b) and line_2d.get_point_count() > 1:
 			var local_pos_1 = line_2d.to_local(b.global_position)
 			line_2d.set_point_position(1, local_pos_1)
 			line_2d.visible = true
