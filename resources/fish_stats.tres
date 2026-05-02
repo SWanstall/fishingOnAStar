@@ -1,14 +1,6 @@
-[gd_resource type="Resource" format=3 uid="uid://bi1rx6yppygan"]
+[gd_resource type="Resource" script_class="fish_stats" format=3 uid="uid://bi1rx6yppygan"]
 
-[sub_resource type="GDScript" id="GDScript_j73r3"]
-script/source = "class_name fish_stats
-extends Resource
-
-@export var texture: Texture2D
-
-@export var max_size := 10
-@export var min_size := 1
-"
+[ext_resource type="Script" uid="uid://brm4n60l7fedb" path="res://scripts/fish_stats.gd" id="1_m60up"]
 
 [resource]
-script = SubResource("GDScript_j73r3")
+script = ExtResource("1_m60up")
