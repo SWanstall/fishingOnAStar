@@ -77,7 +77,7 @@ func _physics_process(delta):
 				else:
 					rope_length -= 2 + distance * reel_perc * 2
 				#await get_tree().create_timer(0.01).timeout
-			print(rope_length)
+			#print(rope_length)
 			scrolling = false
 		# 5. Reel in
 		#if is_reeling:

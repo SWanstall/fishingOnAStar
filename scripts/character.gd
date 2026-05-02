@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var rarity_value = 0.0
+var biome_from_biome_node = 0
 signal fish_rarity_set(rarity_value)
 signal fish_landed
 signal fish_processed
@@ -42,11 +43,12 @@ func _ready():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("lmb") and can_set_hook == true and bobbing == true:
 		if bonus == false:
-			fish_rarity_set.emit(rarity_value) # add biome to this signal
+			fish_rarity_set.emit(rarity_value)
+			print("Fish rarity set and bonus = false")
 			final_fish_rarity = rarity_value
 		bonus = false
-		rod_sprite.fishappear(final_fish_rarity) # add biome to this call
-		print("HOOKED!")
+		rod_sprite.fishappear(final_fish_rarity)
+		#print("HOOKED!")
 		#progress_bar.visible = true
 		hooked = true
 		hooked_.visible = true
@@ -63,7 +65,7 @@ func _process(delta: float) -> void:
 		failed = true
 		can_set_hook = false
 		bite_.visible = false
-		print("Dang, just a nibble...")
+		#print("Dang, just a nibble...")
 		nibble_.visible = true
 		bobbing = false
 		fishing_.visible = false
@@ -74,10 +76,10 @@ func _process(delta: float) -> void:
 		rod_sprite.shot = false
 		
 	if Input.is_action_just_pressed("lmb") and landed == true:
-		rod_sprite.fish_on_hook = false
+		rod_sprite.fish_hooked = false
 		processed = true
-		print("processed = %s" % processed)
-		print("shot = %s" % rod_sprite.shot)
+		#print("processed = %s" % processed)
+		#print("shot = %s" % rod_sprite.shot)
 		emit_signal("fish_processed")
 		landed = false
 		#rod_sprite.reset()
@@ -155,26 +157,26 @@ func _physics_process(delta):
 
 
 func _on_bobbing_timer_timeout():
-	print(bobbing)
-	print("bobbing timeout----------------------")
+	#print(bobbing)
+	#print("bobbing timeout----------------------")
 	if hooked == false and bobbing == true:
 		bite_.visible = true
 		fishing_.visible = false
-		print("set hook!")
+		#print("set hook!")
 		set_hook_timer.start(2)
 		can_set_hook = true
 
 
 
 func _on_set_hook_timer_timeout():
-	print("set hook timeout----------------------")
-	print("hooked = %s" % hooked)
+	#print("set hook timeout----------------------")
+	#print("hooked = %s" % hooked)
 	#print()
 	if hooked == false and bobbing == true and can_set_hook == true:
 		can_set_hook = false
 		bite_.visible = false
 		rod_sprite.shot = false
-		print("Dang, just a nibble...")
+		#print("Dang, just a nibble...")
 		bobbing = false
 		fishing_.visible = false
 
@@ -190,7 +192,7 @@ func tug_of_war():
 
 func _on_tug_timer_timeout():
 	#print("hooked = %s" % hooked)
-	print("tug timer timeout")
+	#print("tug timer timeout")
 	var tug_value = randf_range(1, 8)
 	reeling_progress = reeling_progress - tug_value
 	if reeling_progress < 0:
@@ -201,7 +203,7 @@ func _on_tug_timer_timeout():
 
 
 func is_fishing():
-	print("fishing signal received!")
+	#print("fishing signal received!")
 	if bobbing == false and hooked == false and processed == true and failed == false:
 		rod_sprite.shot = true
 		#if bonus == true:
@@ -224,26 +226,27 @@ func is_not_fishing():
 	can_set_hook = false
 	bite_.visible = false
 	rod_sprite.shot = false
-	print("No longer fishing")
+	#print("No longer fishing")
 	bobbing = false
 	fishing_.visible = false
 
 
-func _on_bonus_zone_body_entered(body):
+func _on_bonus_zone_body_entered(_body):
 	if processed == true:
 		bonus = true
 		print("BONUS ZONE HIT!")
 		rarity_value = randf_range(50.0, 100.0)
 		fish_rarity_set.emit(rarity_value)
+		print("Fish rarity set and bonus = true")
 		final_fish_rarity = rarity_value
-		print("rarity value bonus zone = %s" % rarity_value)
+		#print("rarity value bonus zone = %s" % rarity_value)
 
 
 func _on_rod_sprite_stop_fishing():
 	can_set_hook = false
 	bite_.visible = false
 	rod_sprite.shot = false
-	print("No longer fishing")
+	#print("No longer fishing")
 	bobbing = false
 	fishing_.visible = false
 	bonus = false

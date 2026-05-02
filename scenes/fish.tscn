@@ -1,8 +1,57 @@
 [gd_scene format=3 uid="uid://db4j2h6txbhga"]
 
 [ext_resource type="Texture2D" uid="uid://csjjfgnqiyqfb" path="res://assets/sprites/slime_green.png" id="1_8g0i4"]
+[ext_resource type="Texture2D" uid="uid://dbw3fyu658r43" path="res://assets/sprites/coin.png" id="1_pgks6"]
 [ext_resource type="Script" uid="uid://bv47puookcaju" path="res://scripts/fish.gd" id="2_nub35"]
+[ext_resource type="Texture2D" uid="uid://q7qkcrd8v4n6" path="res://assets/sprites/slime_purple.png" id="3_6lgmd"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvcvt"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x24sl"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1s4w"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ig6q"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hrfi"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex20v"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2ocq"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfhab"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy0hy"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5vuo"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbg1i"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81hvq"]
+atlas = ExtResource("1_pgks6")
+region = Rect2(176, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgks6"]
 atlas = ExtResource("1_8g0i4")
@@ -20,8 +69,65 @@ region = Rect2(48, 24, 24, 24)
 atlas = ExtResource("1_8g0i4")
 region = Rect2(72, 24, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbjsp"]
+atlas = ExtResource("3_6lgmd")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axbn3"]
+atlas = ExtResource("3_6lgmd")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yixxi"]
+atlas = ExtResource("3_6lgmd")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjndy"]
+atlas = ExtResource("3_6lgmd")
+region = Rect2(72, 24, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_bvcvt"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvcvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x24sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1s4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ig6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hrfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex20v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2ocq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfhab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dy0hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5vuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbg1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81hvq")
+}],
+"loop": true,
+"name": &"coin",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pgks6")
@@ -36,10 +142,28 @@ animations = [{
 "texture": SubResource("AtlasTexture_21k1a")
 }],
 "loop": true,
-"name": &"default",
+"name": &"green_slime",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbjsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axbn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yixxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjndy")
+}],
+"loop": true,
+"name": &"purple_slime",
 "speed": 5.0
 }]
 
 [node name="Fish" type="AnimatedSprite2D" unique_id=902702804]
 sprite_frames = SubResource("SpriteFrames_bvcvt")
+animation = &"green_slime"
 script = ExtResource("2_nub35")

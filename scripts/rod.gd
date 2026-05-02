@@ -23,10 +23,11 @@ var scrolling = false
 var b = null
 
 var fish_rarity_calldown
+var biome_calldown
 var green = Color(0.2,1,0.2,1)
 var red = Color(1,0.2,0.2,1)
 var blue = Color(1,0.5,0.0,1)
-var fish_on_hook = false
+var fish_hooked = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,7 +35,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	mouse_position = get_global_mouse_position()
 	look_at(mouse_position)
 	
@@ -72,7 +73,7 @@ func _physics_process(delta):
 		## Spawn the mob by adding it to the Main scene.
 		#add_child(hook)
 	
-	if Input.is_action_just_pressed("rmb") and fish_on_hook == false: #and shot == true:
+	if Input.is_action_just_pressed("rmb") and fish_hooked == false: #and shot == true:
 		reset()
 		reeling = false
 		scrolling = false
@@ -81,8 +82,8 @@ func _physics_process(delta):
 			b.reeling = false
 			b.scrolling = false
 	
-	if Input.is_action_just_released("rmb") and shot == false and fish_on_hook == false:
-		print("shoot")
+	if Input.is_action_just_released("rmb") and shot == false and fish_hooked == false:
+		#print("shoot")
 		shoot()
 		#shot = true
 		#await get_tree().create_timer(0.5).timeout
@@ -138,7 +139,7 @@ func shoot():
 	
 func reset():
 	if is_instance_valid(b):
-		print("reset")
+		#print("reset")
 		b.queue_free()
 		line_2d.remove_point(1)
 		line_2d.visible = false
@@ -148,19 +149,49 @@ func reset():
 
 func fishappear(fish_rarity_from_character):
 	if is_instance_valid(b):
-		fish_on_hook = true
+		fish_hooked = true
 		var fish_on_hook = b.get_node("Fish")
 		var hue
 		
-		if fish_rarity_from_character >= 60 and fish_rarity_from_character < 80:
-			hue = red
-		elif fish_rarity_from_character >= 80:
-			hue = blue
+		#if fish_rarity_from_character >= 60 and fish_rarity_from_character < 80:
+			#hue = red
+		#elif fish_rarity_from_character >= 80:
+			#hue = blue
+		#else:
+			#hue = green
+		#
+		##print("fish rarity = %s" % fish_rarity_from_character)
+		#
+		#fish_on_hook.modulate = hue
+		#fish_on_hook.visible = true
+
+		if biome_calldown == 0:
+			if fish_rarity_from_character >= 60 and fish_rarity_from_character < 80:
+				hue = red
+			elif fish_rarity_from_character >= 80:
+				hue = blue
+			else:
+				hue = green
+			
+			#print("fish rarity = %s" % rarity_value)
+			print("hooked fish green slime")
+			
+			fish_on_hook.modulate = hue
+			fish_on_hook.animation = "green_slime"
+			fish_on_hook.play()
+			fish_on_hook.visible = true
+		
+		elif biome_calldown == 1:
+			print("hooked fish purple slime")
+			fish_on_hook.modulate = Color(1,1,1,1)
+			#print("medium depth fish")
+			fish_on_hook.animation = "purple_slime"
+			fish_on_hook.play()
+			fish_on_hook.visible = true
 		else:
-			hue = green
-		
-		print("fish rarity = %s" % fish_rarity_from_character)
-		
-		fish_on_hook.modulate = hue
-		fish_on_hook.visible = true
-		#beep.modulate = Color(1,0.2,0.2,1)
+			print("hooked fish coin")
+			fish_on_hook.modulate = Color(1,1,1,1)
+			fish_on_hook.animation = "coin"
+			#print("Deep fish")
+			fish_on_hook.play()
+			fish_on_hook.visible = true
