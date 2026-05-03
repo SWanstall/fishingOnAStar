@@ -21,4 +21,6 @@ texture = ExtResource("2_cl6ks")
 
 [node name="Fish" parent="." unique_id=902702804 instance=ExtResource("3_bea6c")]
 visible = false
-position = Vector2(0, 3)
+position = Vector2(3.0000002, 10)
+rotation = 1.5458258
+flip_h = true

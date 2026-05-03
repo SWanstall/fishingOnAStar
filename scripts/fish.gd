@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+@export var stats: fish_stats
+
 var green = Color(0.2,1,0.2,1)
 var red = Color(1,0.2,0.2,1)
 var blue = Color(0.0,1,1,1)

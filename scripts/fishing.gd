@@ -7,7 +7,9 @@ extends Node2D
 
 var green = Color(0.2,1,0.2,1)
 var red = Color(1,0.2,0.2,1)
-var blue = Color(1,0.5,0.0,1)
+var blue = Color(0,1,1,1)
+var orange = Color(1,0.5,0,1)
+var clear = Color(1,1,1,1)
 
 var fish_rarity = 0
 var hue = green
@@ -33,27 +35,52 @@ func _on_character_body_2d_fish_rarity_set(rarity_value: Variant) -> void:
 	if current_biome == 0:
 		if rarity_value >= 60 and rarity_value < 80:
 			hue = red
+			fish.animation = "crab"
 		elif rarity_value >= 80:
-			hue = blue
+			hue = clear
+			fish.animation = "clownfish"
 		else:
 			hue = green
+			fish.animation = "anchovy"
 		
 		#print("fish rarity = %s" % rarity_value)
 		
-		fish.modulate = hue
-		fish.animation = "green_slime"
-		fish.play()
+		#fish.modulate = hue
+		##fish.animation = "anchovy"
+		#fish.play()
 		
 	elif current_biome == 1:
-		fish.modulate = Color(1,1,1,1)
-		print("medium depth fish")
-		fish.animation = "purple_slime"
-		fish.play()
+		if rarity_value >= 60 and rarity_value < 80:
+			hue = clear
+			fish.animation = "surgeonfish"
+		elif rarity_value >= 80:
+			hue = clear
+			fish.animation = "puffer_fish"
+		else:
+			hue = red
+			fish.animation = "anchovy"
+		
+		#print("medium depth fish")
+		#fish.animation = "purple_slime"
+		#fish.modulate = hue
+		#fish.play()
 	else:
-		fish.modulate = Color(1,1,1,1)
-		fish.animation = "coin"
-		print("Deep fish")
-		fish.play()
+		if rarity_value >= 60 and rarity_value < 80:
+			hue = clear
+			fish.animation = "angelfish"
+		elif rarity_value >= 80:
+			hue = clear
+			fish.animation = "coin"
+		else:
+			hue = clear
+			fish.animation = "catfish"
+		#fish.modulate = Color(1,1,1,1)
+		#fish.animation = "coin"
+		#print("Deep fish")
+		#fish.modulate = hue
+		#fish.play()
+	fish.modulate = hue
+	fish.play()
 
 
 func _on_character_fish_landed() -> void:
