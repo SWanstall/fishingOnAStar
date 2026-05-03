@@ -33,10 +33,10 @@ func _on_character_body_2d_fish_rarity_set(rarity_value: Variant) -> void:
 	character.rod_sprite.biome_calldown = current_biome
 	
 	if current_biome == 0:
-		if rarity_value >= 60 and rarity_value < 80:
+		if rarity_value >= 60 and rarity_value < 90:
 			hue = red
 			fish.animation = "crab"
-		elif rarity_value >= 80:
+		elif rarity_value >= 90:
 			hue = clear
 			fish.animation = "clownfish"
 		else:
@@ -50,10 +50,10 @@ func _on_character_body_2d_fish_rarity_set(rarity_value: Variant) -> void:
 		#fish.play()
 		
 	elif current_biome == 1:
-		if rarity_value >= 60 and rarity_value < 80:
+		if rarity_value >= 60 and rarity_value < 90:
 			hue = clear
 			fish.animation = "surgeonfish"
-		elif rarity_value >= 80:
+		elif rarity_value >= 90:
 			hue = clear
 			fish.animation = "puffer_fish"
 		else:
@@ -65,10 +65,10 @@ func _on_character_body_2d_fish_rarity_set(rarity_value: Variant) -> void:
 		#fish.modulate = hue
 		#fish.play()
 	else:
-		if rarity_value >= 60 and rarity_value < 80:
+		if rarity_value >= 60 and rarity_value < 90:
 			hue = clear
 			fish.animation = "angelfish"
-		elif rarity_value >= 80:
+		elif rarity_value >= 90:
 			hue = clear
 			fish.animation = "coin"
 		else:

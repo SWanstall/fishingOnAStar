@@ -156,10 +156,10 @@ func fishappear(fish_rarity_from_character):
 		var hue
 
 		if biome_calldown == 0:
-			if fish_rarity_from_character >= 60 and fish_rarity_from_character < 80:
+			if fish_rarity_from_character >= 60 and fish_rarity_from_character < 90:
 				hue = red
 				fish_on_hook.animation = "crab"
-			elif fish_rarity_from_character >= 80:
+			elif fish_rarity_from_character >= 90:
 				hue = clear
 				fish_on_hook.animation = "clownfish"
 			else:
@@ -176,10 +176,10 @@ func fishappear(fish_rarity_from_character):
 		
 		elif biome_calldown == 1:
 			
-			if fish_rarity_from_character >= 60 and fish_rarity_from_character < 80:
+			if fish_rarity_from_character >= 60 and fish_rarity_from_character < 90:
 				hue = clear
 				fish_on_hook.animation = "surgeonfish"
-			elif fish_rarity_from_character >= 80:
+			elif fish_rarity_from_character >= 90:
 				hue = clear
 				fish_on_hook.animation = "puffer_fish"
 			else:
@@ -194,10 +194,10 @@ func fishappear(fish_rarity_from_character):
 			#fish_on_hook.visible = true
 		else:
 			
-			if fish_rarity_from_character >= 60 and fish_rarity_from_character < 80:
+			if fish_rarity_from_character >= 60 and fish_rarity_from_character < 90:
 				hue = clear
 				fish_on_hook.animation = "angelfish"
-			elif fish_rarity_from_character >= 80:
+			elif fish_rarity_from_character >= 90:
 				hue = clear
 				fish_on_hook.animation = "coin"
 			else:

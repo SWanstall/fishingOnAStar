@@ -359,8 +359,8 @@ biome = 1
 [node name="Biome2" parent="." unique_id=1261034136 instance=ExtResource("8_sgs1c")]
 modulate = Color(0.08627451, 1, 0, 1)
 z_index = 1
-position = Vector2(489.275, 89.915)
-scale = Vector2(24.893, 5.426)
+position = Vector2(689.4, 88)
+scale = Vector2(44.983, 5.426)
 biome = 2
 
 [connection signal="fish_landed" from="Character" to="." method="_on_character_fish_landed"]
