@@ -34,7 +34,7 @@ func _on_character_body_2d_fish_rarity_set(rarity_value: Variant) -> void:
 	
 	if current_biome == 0:
 		if rarity_value >= 60 and rarity_value < 90:
-			hue = red
+			hue = clear
 			fish.animation = "crab"
 		elif rarity_value >= 90:
 			hue = clear

@@ -157,7 +157,7 @@ func fishappear(fish_rarity_from_character):
 
 		if biome_calldown == 0:
 			if fish_rarity_from_character >= 60 and fish_rarity_from_character < 90:
-				hue = red
+				hue = clear
 				fish_on_hook.animation = "crab"
 			elif fish_rarity_from_character >= 90:
 				hue = clear
