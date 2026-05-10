@@ -1,41 +1,41 @@
 [gd_scene format=3 uid="uid://pa7ncide7ajv"]
 
-[ext_resource type="Texture2D" uid="uid://xrir0sdus7sp" path="res://assets/sprites/knight.png" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://dm866fohapki0" path="res://scripts/character.gd" id="1_rkhd4"]
+[ext_resource type="Texture2D" uid="uid://7g2fgrkpn515" path="res://assets/sprites/Aliem-WithBody-Idle2.png" id="2_dp8ca"]
 [ext_resource type="FontFile" uid="uid://c1lxp1evsolc0" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_lrhn5"]
 [ext_resource type="Script" uid="uid://bgvuj4awpcsbo" path="res://scripts/rod.gd" id="4_my7n2"]
 [ext_resource type="PackedScene" uid="uid://c53qfowvsanrx" path="res://scenes/hook.tscn" id="5_0lw5n"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pjt0s"]
-atlas = ExtResource("1_glpr6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp8ca"]
+atlas = ExtResource("2_dp8ca")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wa5vi"]
-atlas = ExtResource("1_glpr6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lw5n"]
+atlas = ExtResource("2_dp8ca")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wfnr8"]
-atlas = ExtResource("1_glpr6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cgup"]
+atlas = ExtResource("2_dp8ca")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_px5sl"]
-atlas = ExtResource("1_glpr6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5ia6"]
+atlas = ExtResource("2_dp8ca")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0qfo5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pjt0s")
+"texture": SubResource("AtlasTexture_dp8ca")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wa5vi")
+"texture": SubResource("AtlasTexture_0lw5n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wfnr8")
+"texture": SubResource("AtlasTexture_2cgup")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_px5sl")
+"texture": SubResource("AtlasTexture_a5ia6")
 }],
 "loop": true,
 "name": &"idle",
@@ -99,7 +99,7 @@ collision_layer = 2
 script = ExtResource("1_rkhd4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=953716331]
-position = Vector2(0, -12)
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_0qfo5")
 animation = &"idle"
 autoplay = "idle"
@@ -157,7 +157,7 @@ Just a nibble..."
 horizontal_alignment = 1
 
 [node name="RodSprite" type="Sprite2D" parent="." unique_id=317627071]
-position = Vector2(3.1750202, -3.705789)
+position = Vector2(6, -4)
 rotation = 1.0341445
 scale = Vector2(40.50561, 1.4651146)
 texture = SubResource("CanvasTexture_lrhn5")
