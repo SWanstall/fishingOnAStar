@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://djfj81jefn3yb" path="res://scenes/water_area.tscn" id="7_fehfy"]
 [ext_resource type="AudioStream" uid="uid://ddqh1uxvka5m2" path="res://assets/sounds/StolenBackgroundMusic.wav" id="8_8krd0"]
 [ext_resource type="PackedScene" uid="uid://bq5eooga6ghn2" path="res://scenes/biome.tscn" id="8_sgs1c"]
-[ext_resource type="FontFile" uid="uid://c1lxp1evsolc0" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="9_8krd0"]
+[ext_resource type="FontFile" uid="uid://c4arnvihcmi1x" path="res://assets/fonts/PixelOperator8.ttf" id="9_8krd0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mu6gr"]
 texture = ExtResource("1_mu6gr")
@@ -375,6 +375,7 @@ offset_left = -80.0
 offset_top = -88.0
 offset_right = -40.0
 offset_bottom = -65.0
+theme_override_colors/font_color = Color(1, 0.5372549, 1, 1)
 theme_override_fonts/font = ExtResource("9_8krd0")
 text = "69"
 

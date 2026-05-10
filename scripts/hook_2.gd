@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed = 300
+@export var speed = 100
 @export var new_gravity = Vector2(0.0, 980.0) # Original gravity is (0.0, 980.0), change as required
 @export var reel_perc = 0.1
 @onready var fish = $Fish
