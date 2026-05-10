@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://djfj81jefn3yb" path="res://scenes/water_area.tscn" id="7_fehfy"]
 [ext_resource type="AudioStream" uid="uid://ddqh1uxvka5m2" path="res://assets/sounds/StolenBackgroundMusic.wav" id="8_8krd0"]
 [ext_resource type="PackedScene" uid="uid://bq5eooga6ghn2" path="res://scenes/biome.tscn" id="8_sgs1c"]
+[ext_resource type="FontFile" uid="uid://c1lxp1evsolc0" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="9_8krd0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mu6gr"]
 texture = ExtResource("1_mu6gr")
@@ -368,6 +369,14 @@ biome = 2
 stream = ExtResource("8_8krd0")
 volume_db = -8.423
 autoplay = true
+
+[node name="FishMeat" type="Label" parent="." unique_id=1647812864]
+offset_left = -80.0
+offset_top = -88.0
+offset_right = -40.0
+offset_bottom = -65.0
+theme_override_fonts/font = ExtResource("9_8krd0")
+text = "69"
 
 [connection signal="fish_landed" from="Character" to="." method="_on_character_fish_landed"]
 [connection signal="fish_processed" from="Character" to="." method="_on_character_fish_processed"]
