@@ -5,6 +5,7 @@ extends Node2D
 @onready var character = $Character
 @onready var fish: AnimatedSprite2D = $Fish
 @onready var fish_meat = $FishMeat
+@onready var music: AudioStreamPlayer = $AudioStreamPlayer
 
 var green = Color(0.2,1,0.2,1)
 var red = Color(1,0.2,0.2,1)
@@ -127,3 +128,10 @@ func _on_biome_2_biome_entered(biome):
 func _on_biome_3_biome_entered(biome):
 	current_biome = biome
 	print(current_biome)
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	if music.playing == false:
+		music.play()
+	else:
+		music.stop()

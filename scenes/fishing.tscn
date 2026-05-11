@@ -368,16 +368,36 @@ biome = 2
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=745841087]
 stream = ExtResource("8_8krd0")
 volume_db = -8.423
-autoplay = true
 
 [node name="FishMeat" type="Label" parent="." unique_id=1647812864]
-offset_left = -80.0
+offset_left = -112.0
 offset_top = -88.0
-offset_right = -40.0
+offset_right = -72.0
 offset_bottom = -65.0
 theme_override_colors/font_color = Color(1, 0.5372549, 1, 1)
 theme_override_fonts/font = ExtResource("9_8krd0")
 text = "69"
+
+[node name="CheckButton" type="CheckButton" parent="." unique_id=270495243]
+offset_left = 176.0
+offset_top = -96.0
+offset_right = 259.0
+offset_bottom = -72.0
+theme_override_fonts/font = ExtResource("9_8krd0")
+theme_override_font_sizes/font_size = 8
+text = "Music"
+alignment = 1
+
+[node name="Label" type="Label" parent="CheckButton" unique_id=1200044745]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 78.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("9_8krd0")
+theme_override_font_sizes/font_size = 8
+text = "Music"
 
 [connection signal="fish_landed" from="Character" to="." method="_on_character_fish_landed"]
 [connection signal="fish_processed" from="Character" to="." method="_on_character_fish_processed"]
@@ -387,3 +407,4 @@ text = "69"
 [connection signal="biome_entered" from="Biome0" to="." method="_on_biome_biome_entered"]
 [connection signal="biome_entered" from="Biome1" to="." method="_on_biome_2_biome_entered"]
 [connection signal="biome_entered" from="Biome2" to="." method="_on_biome_3_biome_entered"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
