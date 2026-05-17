@@ -7,6 +7,12 @@ extends Node2D
 @onready var fish_meat = $FishMeat
 @onready var music: AudioStreamPlayer = $AudioStreamPlayer
 
+@onready var sky_night = $SkyNight
+@onready var sky_dusk = $SkyDusk
+@onready var sky_dawn = $SkyDawn
+@onready var sky_daylight = $SkyDaylight
+
+
 var green = Color(0.2,1,0.2,1)
 var red = Color(1,0.2,0.2,1)
 var blue = Color(0,1,1,1)
@@ -21,9 +27,13 @@ var current_biome = null
 
 var fish_meat_score = 0
 
+enum Day_night_periods {DAWN, DAY, DUSK, NIGHT}
+var day_stage = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	fish_meat.text = str("Fish meat: %s" % fish_meat_score)
+	fish_meat.set("theme_override_colors/font_color", orange)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -135,3 +145,34 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 		music.play()
 	else:
 		music.stop()
+
+func _on_day_night_cycle_timeout():
+	if day_stage == 0:
+		sky_dawn.visible = true
+		sky_daylight.visible = false
+		sky_dusk.visible = false
+		sky_night.visible = false
+		day_stage += 1
+		fish_meat.set("theme_override_colors/font_color", Color(0.32, 0, 0.33, 1))
+	elif day_stage == 1:
+		sky_dawn.visible = false
+		sky_daylight.visible = true
+		sky_dusk.visible = false
+		sky_night.visible = false
+		day_stage += 1
+		fish_meat.set("theme_override_colors/font_color", clear)
+	elif day_stage == 2:
+		sky_dawn.visible = false
+		sky_daylight.visible = false
+		sky_dusk.visible = true
+		sky_night.visible = false
+		day_stage += 1
+		fish_meat.set("theme_override_colors/font_color", orange)
+	elif day_stage == 3:
+		sky_dawn.visible = false
+		sky_daylight.visible = false
+		sky_dusk.visible = false
+		sky_night.visible = true
+		day_stage = 0
+		print("end of day")
+		fish_meat.set("theme_override_colors/font_color", orange)
