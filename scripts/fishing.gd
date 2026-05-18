@@ -192,4 +192,5 @@ func _on_score_screen_score_processed():
 	score_screen.visible = false
 	fish_meat_score = 0
 	fish_meat.visible = true
+	fish_meat.text = str("Fish meat: %s" % fish_meat_score)
 	character.is_not_fishing()
