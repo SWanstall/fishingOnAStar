@@ -387,6 +387,7 @@ scale = Vector2(44.983, 5.426)
 biome = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=745841087]
+process_mode = 3
 stream = ExtResource("8_8krd0")
 volume_db = -8.423
 
