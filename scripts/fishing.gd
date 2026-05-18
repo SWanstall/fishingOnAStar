@@ -185,3 +185,11 @@ func run_score_screen():
 	score_screen.visible = true
 	fish_meat.visible = false
 	score_screen.scoring(fish_meat_score)
+
+
+func _on_score_screen_score_processed():
+	get_tree().paused = false
+	score_screen.visible = false
+	fish_meat_score = 0
+	fish_meat.visible = true
+	character.is_not_fishing()

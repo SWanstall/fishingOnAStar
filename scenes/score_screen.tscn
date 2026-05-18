@@ -156,3 +156,25 @@ offset_bottom = 144.0
 theme_override_fonts/font = ExtResource("2_j7j2c")
 text = "Fish Meat: 69"
 horizontal_alignment = 1
+
+[node name="DayComplete" type="Label" parent="." unique_id=680715011]
+z_index = 6
+offset_left = 112.0
+offset_top = 40.0
+offset_right = 400.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("2_j7j2c")
+theme_override_font_sizes/font_size = 24
+text = "Day Complete!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1033243241]
+z_index = 6
+offset_left = 192.0
+offset_top = 168.0
+offset_right = 318.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("2_j7j2c")
+text = "New Day!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

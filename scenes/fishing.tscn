@@ -426,6 +426,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="ScoreScreen" parent="." unique_id=311964855 instance=ExtResource("11_k2yc3")]
+process_mode = 3
 visible = false
 position = Vector2(-199, -127)
 
@@ -439,3 +440,4 @@ position = Vector2(-199, -127)
 [connection signal="biome_entered" from="Biome2" to="." method="_on_biome_3_biome_entered"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="timeout" from="DayNightCycle" to="." method="_on_day_night_cycle_timeout"]
+[connection signal="score_processed" from="ScoreScreen" to="." method="_on_score_screen_score_processed"]
