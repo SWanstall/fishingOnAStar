@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bq5eooga6ghn2" path="res://scenes/biome.tscn" id="8_sgs1c"]
 [ext_resource type="FontFile" uid="uid://c4arnvihcmi1x" path="res://assets/fonts/PixelOperator8.ttf" id="9_8krd0"]
 [ext_resource type="Texture2D" uid="uid://cobwp3j3f65oh" path="res://assets/sprites/Spaceship2.png" id="10_pihtl"]
+[ext_resource type="PackedScene" uid="uid://puja430lmr1d" path="res://scenes/score_screen.tscn" id="11_k2yc3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mu6gr"]
 texture = ExtResource("1_mu6gr")
@@ -422,6 +423,10 @@ text = "Music"
 [node name="DayNightCycle" type="Timer" parent="." unique_id=226323233]
 wait_time = 5.0
 autostart = true
+
+[node name="ScoreScreen" parent="." unique_id=311964855 instance=ExtResource("11_k2yc3")]
+visible = false
+position = Vector2(-199, -127)
 
 [connection signal="fish_landed" from="Character" to="." method="_on_character_fish_landed"]
 [connection signal="fish_processed" from="Character" to="." method="_on_character_fish_processed"]

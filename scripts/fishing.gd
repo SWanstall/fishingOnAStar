@@ -6,6 +6,7 @@ extends Node2D
 @onready var fish: AnimatedSprite2D = $Fish
 @onready var fish_meat = $FishMeat
 @onready var music: AudioStreamPlayer = $AudioStreamPlayer
+@onready var score_screen = $ScoreScreen
 
 @onready var sky_night = $SkyNight
 @onready var sky_dusk = $SkyDusk
@@ -25,7 +26,7 @@ var fish_processed = false
 
 var current_biome = null
 
-var fish_meat_score = 0
+var fish_meat_score: int = 0
 
 enum Day_night_periods {DAWN, DAY, DUSK, NIGHT}
 var day_stage = 0
@@ -176,3 +177,11 @@ func _on_day_night_cycle_timeout():
 		day_stage = 0
 		print("end of day")
 		fish_meat.set("theme_override_colors/font_color", orange)
+		run_score_screen()
+
+
+func run_score_screen():
+	get_tree().paused = true
+	score_screen.visible = true
+	fish_meat.visible = false
+	score_screen.scoring(fish_meat_score)
