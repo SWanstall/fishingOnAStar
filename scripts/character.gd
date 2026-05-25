@@ -66,14 +66,14 @@ func _process(delta: float) -> void:
 		can_set_hook = false
 		bite_.visible = false
 		#print("Dang, just a nibble...")
-		nibble_.visible = true
 		bobbing = false
 		fishing_.visible = false
 		rod_sprite.reset()
-		await get_tree().create_timer(2.0).timeout
-		nibble_.visible = false
 		failed = false
 		rod_sprite.shot = false
+		nibble_.visible = true
+		await get_tree().create_timer(2.0).timeout
+		nibble_.visible = false
 		
 	if Input.is_action_just_pressed("lmb") and landed == true:
 		rod_sprite.fish_hooked = false
@@ -204,6 +204,7 @@ func _on_tug_timer_timeout():
 
 func is_fishing():
 	#print("fishing signal received!")
+	nibble_.visible = false
 	if bobbing == false and hooked == false and processed == true and failed == false:
 		rod_sprite.shot = true
 		#if bonus == true:

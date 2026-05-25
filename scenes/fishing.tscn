@@ -422,7 +422,7 @@ theme_override_font_sizes/font_size = 8
 text = "Music"
 
 [node name="DayNightCycle" type="Timer" parent="." unique_id=226323233]
-wait_time = 20.0
+wait_time = 5.0
 autostart = true
 
 [node name="ScoreScreen" parent="." unique_id=311964855 instance=ExtResource("11_k2yc3")]
